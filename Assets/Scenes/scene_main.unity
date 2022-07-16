@@ -3351,6 +3351,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142301941}
     m_Modifications:
+    - target: {fileID: 8000154068617468168, guid: f2461b6670228404c8b8668b8b0b97f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1969284051}
+    - target: {fileID: 8000154068617468168, guid: f2461b6670228404c8b8668b8b0b97f6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RerollPool
+      objectReference: {fileID: 0}
     - target: {fileID: 8000154068665793444, guid: f2461b6670228404c8b8668b8b0b97f6, type: 3}
       propertyPath: m_Name
       value: reroll
@@ -3834,7 +3842,7 @@ GameObject:
   - component: {fileID: 797578083}
   - component: {fileID: 797578082}
   - component: {fileID: 797578081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5507,7 +5515,7 @@ GameObject:
   - component: {fileID: 1052253719}
   m_Layer: 0
   m_Name: LevelGenerator
-  m_TagString: Untagged
+  m_TagString: LevelGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5539,6 +5547,7 @@ MonoBehaviour:
   combatTile: {fileID: 8974897363059737156, guid: aae6bb8ded309b649a1e4bc50618d57d, type: 3}
   startTile: {fileID: 8974897363059737156, guid: 0db5209d881095c479fd34ac46673341, type: 3}
   endTile: {fileID: 8974897363059737156, guid: 60d5af0ebb0e7174dae4f17dcc5971da, type: 3}
+  pathObjects: []
 --- !u!4 &1052253720
 Transform:
   m_ObjectHideFlags: 0
@@ -9683,6 +9692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1836246520}
   - component: {fileID: 1836246519}
+  - component: {fileID: 1836246521}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -9717,6 +9727,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836246521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836246518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd0ab5aa50559942a3d3dbb2d155a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1875633849
 GameObject:
   m_ObjectHideFlags: 0
@@ -10209,6 +10231,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954769079}
   m_Mesh: {fileID: -3439560834912665799, guid: 4d562ecbec422174c8d0e866a2efb37e, type: 3}
+--- !u!114 &1969284051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+  m_PrefabInstance: {fileID: 546970451}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e6c2e03dbb20944a5114171890265f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1982730271
 GameObject:
   m_ObjectHideFlags: 0
