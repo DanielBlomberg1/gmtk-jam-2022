@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8709595989671470220}
   - component: {fileID: 8709595989671470222}
   - component: {fileID: 8709595989671470221}
+  - component: {fileID: 1997425957782939651}
   m_Layer: 5
   m_Name: TreasureTile
   m_TagString: Untagged
@@ -76,3 +77,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1997425957782939651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8709595989671470219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df244bc1aadcf1e4c859b3bf71e3e948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAX_WIDTH: 400
+  TextToShow: 'Treasure Tile, rewards with no cost. However there is luck involved '

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6752849646510086392}
   - component: {fileID: 6752849646510086394}
   - component: {fileID: 6752849646510086395}
+  - component: {fileID: 701635372101820477}
   m_Layer: 5
   m_Name: CurseTile
   m_TagString: Untagged
@@ -76,3 +77,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &701635372101820477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752849646510086393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df244bc1aadcf1e4c859b3bf71e3e948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAX_WIDTH: 400
+  TextToShow: Cursed Tile best to avoid at all costs

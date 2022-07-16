@@ -25,7 +25,7 @@ public class CurrentObjectiveManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.PLACE_TILE:
-                tipText.text = "Choose Tile";
+                tipText.text = "Place Tile";
                 break;
             case GameManager.GameState.ROLL_DICE:
                 tipText.text = "Roll Dice";
