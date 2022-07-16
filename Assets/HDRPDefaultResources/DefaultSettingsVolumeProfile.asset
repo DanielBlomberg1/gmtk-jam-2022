@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1016694868962581565
+--- !u!114 &-7082144586596611340
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,46 +9,85 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56b145d2b9ee1ac4f846968484e7485a, type: 3}
-  m_Name: ContactShadows
+  m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
+  m_Name: Fog
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
-    m_Value: 1
-  enable:
     m_OverrideState: 1
     m_Value: 1
-  length:
-    m_OverrideState: 0
-    m_Value: 0.15
-  opacity:
-    m_OverrideState: 0
+  enabled:
+    m_OverrideState: 1
     m_Value: 1
-  distanceScaleFactor:
+  colorMode:
+    m_OverrideState: 1
+    m_Value: 0
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0.29622424, g: 0.14351194, b: 0.7075472, a: 1}
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  maxFogDistance:
+    m_OverrideState: 1
+    m_Value: 5000
+  mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
-  maxDistance:
+  mipFogNear:
     m_OverrideState: 0
+    m_Value: 0
+  mipFogFar:
+    m_OverrideState: 0
+    m_Value: 1000
+  baseHeight:
+    m_OverrideState: 1
+    m_Value: -7.66
+  maximumHeight:
+    m_OverrideState: 1
     m_Value: 50
-  minDistance:
+  meanFreePath:
+    m_OverrideState: 1
+    m_Value: 12.6
+  enableVolumetricFog:
+    m_OverrideState: 1
+    m_Value: 1
+  albedo:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  globalLightProbeDimmer:
+    m_OverrideState: 1
+    m_Value: 1
+  depthExtent:
+    m_OverrideState: 1
+    m_Value: 64
+  denoisingMode:
+    m_OverrideState: 1
+    m_Value: 2
+  anisotropy:
     m_OverrideState: 0
     m_Value: 0
-  fadeDistance:
+  sliceDistributionUniformity:
     m_OverrideState: 0
-    m_Value: 5
-  fadeInDistance:
+    m_Value: 0.75
+  m_FogControlMode:
+    m_OverrideState: 1
+    m_Value: 0
+  screenResolutionPercentage:
+    m_OverrideState: 0
+    m_Value: 12.5
+  volumeSliceCount:
+    m_OverrideState: 0
+    m_Value: 64
+  m_VolumetricFogBudget:
+    m_OverrideState: 1
+    m_Value: 0.33
+  m_ResolutionDepthRatio:
+    m_OverrideState: 1
+    m_Value: 0.666
+  directionalLightsOnly:
     m_OverrideState: 0
     m_Value: 0
-  rayBias:
-    m_OverrideState: 0
-    m_Value: 0.2
-  thicknessScale:
-    m_OverrideState: 0
-    m_Value: 0.15
-  m_SampleCount:
-    m_OverrideState: 0
-    m_Value: 10
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   components:
   - {fileID: 7686318427622180703}
-  - {fileID: -1016694868962581565}
   - {fileID: 7502528774814404555}
   - {fileID: 7542669330009093999}
   - {fileID: 1501199423866068322}
@@ -71,6 +109,7 @@ MonoBehaviour:
   - {fileID: 1932259527246508038}
   - {fileID: 6268572206696931608}
   - {fileID: 2437481253458512786}
+  - {fileID: -7082144586596611340}
 --- !u!114 &1501199423866068322
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -83,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f077503be6ae942a1e1245dbd53ea9, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   quality:
     m_OverrideState: 1
     m_Value: 1
@@ -92,7 +131,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.104
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -193,10 +232,10 @@ MonoBehaviour:
     m_Value: 0
   top:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 1, a: 1}
+    m_Value: {r: 0.27844715, g: 0, b: 1, a: 1}
   middle:
     m_OverrideState: 1
-    m_Value: {r: 0.3, g: 0.7, b: 1, a: 1}
+    m_Value: {r: 0.44968888, g: 0.2980392, b: 1, a: 1}
   bottom:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -227,7 +266,7 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 0.04576984
+    m_Value: 0.095700234
   compensation:
     m_OverrideState: 1
     m_Value: 0
@@ -421,7 +460,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 1
   directLightingStrength:
     m_OverrideState: 0
     m_Value: 0
