@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Tile {
+    public Vector2 position;
+    public GameObject tilePrefab;
+    public int index;
+
+    public Tile(Vector2 pos, GameObject tilePrefab, int index){
+        this.position = pos;
+        this.tilePrefab = tilePrefab;
+        this.index = index;
+    }
+}
+
 public class LevelGenerator : MonoBehaviour
 {
     public int width;
@@ -17,7 +29,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject startTile;
     public GameObject endTile;
 
-    public GameObject[,] level;
+    public List<Tile> path;
 
     private void Start() {
         GenerateLevel();
@@ -25,13 +37,14 @@ public class LevelGenerator : MonoBehaviour
 
     public void GenerateLevel(){
         DeleteLevel();
-
-        level = new GameObject[width, height];
+        
+        path = new List<Tile>();
 
         GeneratePath();
 
-        level[0, 0] = startTile;
-        level[height - 1, width - 1] = endTile;
+        // set start and end tiles
+        path[0] = new Tile(path[0].position, startTile, path[0].index);
+        path[path.Count - 1] = new Tile(path[path.Count - 1].position, endTile, path[path.Count - 1].index);
 
         InstantiateLevel();
     }
@@ -55,27 +68,16 @@ public class LevelGenerator : MonoBehaviour
         int randomTileCount = 0;
         int previousRandomTile = -1;
 
-        while (currentTile != end){
+        while (true) {
             if (currentTile == corners[0]){
                 target = corners[1];
             } else if (currentTile == corners[1]) {
                 target = end;
             }
 
-            // move to next position
-            if (currentTile.y < target.y){
-                currentTile.y++;
-            } else if (currentTile.y > target.y){
-                currentTile.y--;
-            } else if (currentTile.x < target.x){
-                currentTile.x++;
-            } else if (currentTile.x > target.x){
-                currentTile.x--;
-            }
-
             // choose tile
             if (tileIndex == 1){
-                level[(int)currentTile.x, (int)currentTile.y] = combatTile;
+                path.Add(new Tile(currentTile, combatTile, tileIndex));
             } 
             else if (Random.Range(0, 100) < randomTileChance && randomTileCount <= maxRandomTiles){
                 randomTileCount++;
@@ -92,10 +94,25 @@ public class LevelGenerator : MonoBehaviour
 
                 previousRandomTile = randomTileIndex;
                 
-                level[(int)currentTile.x, (int)currentTile.y] = randomTiles[randomTileIndex];
-            } 
+                path.Add(new Tile(currentTile, randomTiles[randomTileIndex], tileIndex));
+            }
             else {
-                level[(int)currentTile.x, (int)currentTile.y] = neutralTile;            
+                path.Add(new Tile(currentTile, neutralTile, tileIndex));      
+            }
+
+            if (currentTile == end){
+                break;
+            }
+
+            // move to next position
+            if (currentTile.y < target.y){
+                currentTile.y++;
+            } else if (currentTile.y > target.y){
+                currentTile.y--;
+            } else if (currentTile.x < target.x){
+                currentTile.x++;
+            } else if (currentTile.x > target.x){
+                currentTile.x--;
             }
 
             tileIndex++;
@@ -109,16 +126,11 @@ public class LevelGenerator : MonoBehaviour
     }
 
     void InstantiateLevel(){
-        for (int y = height - 1; y >= 0; y--)
+        foreach (Tile tile in path)
         {
-            for (int x = 0; x < width; x++)
-            {
-                if (level[x, y]) {
-                    GameObject tile = Instantiate(level[x, y], new Vector3(x, 0, y), Quaternion.identity);
+            GameObject tileObject = Instantiate(tile.tilePrefab, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.identity);
 
-                    tile.transform.SetParent(tileParent);
-                }
-            }
+            tileObject.transform.SetParent(tileParent);
         }
     }
 
