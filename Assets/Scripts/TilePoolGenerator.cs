@@ -18,18 +18,21 @@ public class TilePoolGenerator : MonoBehaviour
 
     public void GenerateTilePool()
     {
-        foreach (Transform child in gameObject.transform)
+        foreach (Transform child in transform)
         {
             GameObject.Destroy(child.gameObject);
         }
 
-        for(int i =0; i < 6; i++)
+        for(int i = 0; i < 6; i++)
         {
             float randomamount = Screen.currentResolution.height / gap;
             GameObject randomOne = tiles[Random.Range(0, 6)];
             ordered.Add(randomOne);
-            Vector3 v = new( 80, 500 - i * randomamount, 0 );
-            Instantiate(randomOne, v, Quaternion.identity, gameObject.transform);
+
+            // saat ite korjata
+            //Vector3 v = new( 80, 500 - i * randomamount, 0 );
+
+            //Instantiate(randomOne, v, Quaternion.identity, transform);
         }
 
     }

@@ -53,12 +53,10 @@ public class ClickHandler : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 1f;
             int layerMask = 1 << 8;
             layerMask = ~layerMask;
-
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -67,21 +65,12 @@ public class ClickHandler : MonoBehaviour
 
             if (Physics.Raycast(cam.transform.position, mouseWorldPos - cam.transform.position, out hit, Mathf.Infinity, layerMask))
             {
-                int len = levelGen.getPathLength();
-                Debug.Log(len);
-                if (hit.transform.gameObject.name == "Unset Tile(Clone)" || hit.transform.gameObject.name == "Unset Tile")
+                if (hit.transform.CompareTag("Unset"))
                 { 
-                    for (int i = 0; i < len; i++)
-                    {
-                        Debug.Log(levelGen.pathObjects[i].GetInstanceID() == hit.transform.gameObject.GetInstanceID());
-                        if (levelGen.pathObjects[i].GetInstanceID() == hit.transform.gameObject.GetInstanceID())
-                        {
-                            // ei replacee vain poistaa
-                            levelGen.ChangeTileFromIndex(i, currently);
-                            levelGen.ReloadLevel();
-                        }
+                    int index = hit.transform.GetSiblingIndex();
 
-                    }
+                    levelGen.path[index] = new Tile(levelGen.path[index].position, currently, levelGen.path[index].index);
+                    levelGen.ReloadLevel();
                 }
             }
         }

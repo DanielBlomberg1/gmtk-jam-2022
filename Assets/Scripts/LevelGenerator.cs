@@ -30,7 +30,6 @@ public class LevelGenerator : MonoBehaviour
     public GameObject endTile;
 
     public List<Tile> path;
-    public List<GameObject> pathObjects;
 
     private void Start() {
         GenerateLevel();
@@ -120,16 +119,6 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    public void ChangeTileFromIndex(int index, GameObject gm)
-    {
-        path[index] = new Tile(path[index].position, gm, path[index].index);
-    }
-
-    public int getPathLength()
-    {
-        return path.Count;
-    }
-
     public void ReloadLevel()
     {
         DeleteLevel();
@@ -137,11 +126,10 @@ public class LevelGenerator : MonoBehaviour
     }
 
     void InstantiateLevel(){
-        pathObjects.Clear();
         foreach (Tile tile in path)
         {
             GameObject tileObject = Instantiate(tile.tilePrefab, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.identity);
-            pathObjects.Add(tileObject);
+
             tileObject.transform.SetParent(tileParent);
         }
     }
