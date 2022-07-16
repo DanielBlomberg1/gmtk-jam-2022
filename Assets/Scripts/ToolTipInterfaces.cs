@@ -21,7 +21,6 @@ public class ToolTipInterfaces : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         StopAllCoroutines();
         StartCoroutine(Delay());
-        ToolTipManager.OnMouseHover(TextToShow, Input.mousePosition, 250);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -35,6 +34,7 @@ public class ToolTipInterfaces : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         Debug.Log("Something has happened..");
         //gameObject.transform.localScale  = new Vector3( x * growthAmount, y * growthAmount, z * growthAmount);
+        ToolTipManager.OnMouseHover(TextToShow, Input.mousePosition, 250);
     }
     private IEnumerator Delay()
     {

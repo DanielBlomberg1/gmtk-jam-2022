@@ -34,7 +34,7 @@ public class ToolTipManager : MonoBehaviour
         tipText.text = tip;
         tipWin.sizeDelta = new Vector2(250,
             tipText.preferredHeight);
-        tipWin.transform.position = new Vector2(-pos.x + tipWin.sizeDelta.x, pos.y);
+        tipWin.transform.position = new Vector2(pos.x + 50, pos.y);
         tipWin.gameObject.SetActive(true);
     }
     public void HideToolTip()
