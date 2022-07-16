@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyTile : MonoBehaviour
+public class ClickHandler : MonoBehaviour
 {
 
     private bool isRightState = false;
@@ -11,15 +11,17 @@ public class EmptyTile : MonoBehaviour
     private LevelGenerator levelGen;
     private int index;
     private GameObject currently;
+    private Camera cam;
 
     // Start is called before the first frame update
     private void Start()
     {
         GameObject GameController = GameObject.FindGameObjectWithTag("GameController");
         gameManager = GameController.GetComponent<GameManager>();
-        levelGen = GameController.GetComponent<LevelGenerator>();
+        levelGen = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>();
         tilePool = GameObject.FindGameObjectWithTag("tilePool").GetComponent<TilePoolGenerator>();
         GameManager.stateChange += GameStateHandler;
+        cam = Camera.main;
     }
 
 
@@ -28,7 +30,12 @@ public class EmptyTile : MonoBehaviour
         if(newState == GameManager.GameState.PLACE_TILE)
         {
             isRightState = true;
-            index = gameManager.LASTTHROWN;
+            index = gameManager.LASTTHROWN - 1;
+           // Debug.Log(tilePool.ORDERED.Count);
+            for(int i = 0; i < tilePool.ORDERED.Count; i++)
+            {
+                //Debug.Log(tilePool.ORDERED[i].name);
+            }
             currently = tilePool.ORDERED[index];
         }
         else
@@ -46,28 +53,34 @@ public class EmptyTile : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 1f;
+            int layerMask = 1 << 8;
+            layerMask = ~layerMask;
+
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            Debug.Log("try");
-            if (Physics.Raycast(ray, out hit))
+
+            Vector3 mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
+
+            if (Physics.Raycast(cam.transform.position, mouseWorldPos - cam.transform.position, out hit, Mathf.Infinity, layerMask))
             {
-                Debug.Log(hit.transform.gameObject.name);
-                //Select stage    
-                if (hit.transform.name == "Unset Tile(Clone)" || hit.transform.name == "Unset Tile")
-                {
-                    Debug.Log("hit right target" + levelGen.level.GetLength(0));
-                    for (int i = 0; i<levelGen.level.GetLength(0); i++)
+                int len = levelGen.getPathLength();
+                Debug.Log(len);
+                if (hit.transform.gameObject.name == "Unset Tile(Clone)" || hit.transform.gameObject.name == "Unset Tile")
+                { 
+                    for (int i = 0; i < len; i++)
                     {
-                        for (int j = 0; j < levelGen.level.GetLength(1); j++)
+                        Debug.Log(levelGen.pathObjects[i].GetInstanceID() == hit.transform.gameObject.GetInstanceID());
+                        if (levelGen.pathObjects[i].GetInstanceID() == hit.transform.gameObject.GetInstanceID())
                         {
-                            Debug.Log(levelGen.level[i, j].name);
-                            if (levelGen.level[i, j].GetInstanceID() != gameObject.GetInstanceID())
-                            {
-                                continue;
-                            }
-                            levelGen.level[i, j] = currently;
+                            // ei replacee vain poistaa
+                            levelGen.ChangeTileFromIndex(i, currently);
                             levelGen.ReloadLevel();
                         }
+
                     }
                 }
             }
