@@ -5,23 +5,41 @@ using UnityEngine;
 public class TilePoolGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject[] tiles;
-    //private GameObject[] ordered;
+    private List<int> ids;
+    public List<int> IDS => ids;
+
 
     void Start()
     {
-        GenerateRandomSixNumbers();
+        ids = new List<int>();
+        GenerateTilePool();
     }
 
-    void GenerateRandomSixNumbers()
+    public void GenerateTilePool()
     {
-        Debug.Log("WTF");
-        foreach (var tile in tiles)
+        foreach (Transform child in gameObject.transform)
         {
-            //tiles.CopyTo(ordered, Random.Range(0, 6));
+            GameObject.Destroy(child.gameObject);
+        }
+        Debug.Log("WTF");
+        for(int i =0; i < 6; i++)
+        {
+            float randomamount = Screen.currentResolution.height / 16;
             GameObject randomOne = tiles[Random.Range(0, 6)];
-            Vector3 v = new( 0, 0, 0 );
+            ids.Add(randomOne.GetInstanceID());
+            Vector3 v = new( 80, 500 - i * randomamount, 0 );
             Instantiate(randomOne, v, Quaternion.identity, gameObject.transform);
         }
 
     }
+
+    public void RerollPool()
+    {
+        // if player.getcomponent<Stats>().rerolls > 0
+        if (true == true)
+        {
+            GenerateTilePool();
+        }
+    }
+
 }

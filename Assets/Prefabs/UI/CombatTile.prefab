@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5910402209047171204}
   - component: {fileID: 5910402209047171210}
   - component: {fileID: 5910402209047171205}
+  - component: {fileID: 6535894628598717838}
   m_Layer: 5
   m_Name: CombatTile
   m_TagString: Untagged
@@ -76,3 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6535894628598717838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910402209047171207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df244bc1aadcf1e4c859b3bf71e3e948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAX_WIDTH: 400
+  TextToShow: Combat tile, contains dangerous enemies. You will be rewarded if you
+    survive
