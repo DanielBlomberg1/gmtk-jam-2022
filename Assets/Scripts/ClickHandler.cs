@@ -54,8 +54,7 @@ public class ClickHandler : MonoBehaviour
 
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 1f;
-        int layerMask = 1 << 8;
-        layerMask = ~layerMask;
+        int layerMask = 1 << 9;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -63,7 +62,7 @@ public class ClickHandler : MonoBehaviour
         Vector3 mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
 
         if (Physics.Raycast(cam.transform.position, mouseWorldPos - cam.transform.position, out hit, Mathf.Infinity, layerMask)){
-            
+
             // if mouse hovered on unset tile
             if (hit.transform.CompareTag("Unset"))
             {
