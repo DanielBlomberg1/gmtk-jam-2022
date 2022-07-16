@@ -59,8 +59,6 @@ public class Dice : MonoBehaviour
 
                 rigidBody.AddForce(dir * pullForce);
                 rigidBody.AddTorque(rotationAxis * -dir.magnitude * rotationForce);
-
-                Debug.DrawRay(transform.position, rotationAxis * 5, Color.red);
             }
         }
 
