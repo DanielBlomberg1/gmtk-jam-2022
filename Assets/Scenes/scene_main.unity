@@ -4326,6 +4326,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4335893456792010119, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
+      propertyPath: holdDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7572554630408062172, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
       propertyPath: m_Name
       value: Dice
