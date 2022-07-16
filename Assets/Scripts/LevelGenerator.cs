@@ -6,11 +6,14 @@ public class LevelGenerator : MonoBehaviour
 {
     public int width;
     public int height;
+    public int maxRandomTiles;
+    public int randomTileChance;
 
     public Transform tileParent;
 
     public GameObject[] randomTiles;
     public GameObject neutralTile;
+    public GameObject combatTile;
     public GameObject startTile;
     public GameObject endTile;
 
@@ -48,6 +51,10 @@ public class LevelGenerator : MonoBehaviour
         Vector2 target = corners[0];
         Vector2 end = new Vector2(width - 1, height - 1);
 
+        int tileIndex = 0;
+        int randomTileCount = 0;
+        int previousRandomTile = -1;
+
         while (currentTile != end){
             if (currentTile == corners[0]){
                 target = corners[1];
@@ -55,6 +62,7 @@ public class LevelGenerator : MonoBehaviour
                 target = end;
             }
 
+            // move to next position
             if (currentTile.y < target.y){
                 currentTile.y++;
             } else if (currentTile.y > target.y){
@@ -65,7 +73,32 @@ public class LevelGenerator : MonoBehaviour
                 currentTile.x--;
             }
 
-            level[(int)currentTile.x, (int)currentTile.y] = neutralTile;
+            // choose tile
+            if (tileIndex == 1){
+                level[(int)currentTile.x, (int)currentTile.y] = combatTile;
+            } 
+            else if (Random.Range(0, 100) < randomTileChance && randomTileCount <= maxRandomTiles){
+                randomTileCount++;
+
+                int randomTileIndex = Random.Range(0, randomTiles.Length);
+
+                if (randomTileIndex == previousRandomTile){
+                    if (randomTileIndex == randomTiles.Length - 1){
+                        randomTileIndex--;
+                    } else {
+                        randomTileIndex++;
+                    }
+                }
+
+                previousRandomTile = randomTileIndex;
+                
+                level[(int)currentTile.x, (int)currentTile.y] = randomTiles[randomTileIndex];
+            } 
+            else {
+                level[(int)currentTile.x, (int)currentTile.y] = neutralTile;            
+            }
+
+            tileIndex++;
         }
     }
 
