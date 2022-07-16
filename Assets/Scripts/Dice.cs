@@ -88,9 +88,18 @@ public class Dice : MonoBehaviour
 
             gameManager.DiceHasBeenRolled(face);
 
-            thrown = false;
-            gameObject.SetActive(false);
-            
+            // start the dissaperance sequence 
+            StartCoroutine(Delay());
+
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3);
+
+        thrown = false;
+        gameObject.SetActive(false);
+        StopAllCoroutines();
     }
 }

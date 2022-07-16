@@ -10,15 +10,11 @@ public class CurrentObjectiveManager : MonoBehaviour
     [SerializeField] private GameObject dice;
     [SerializeField] private GameObject AdvanceButton;
 
-    private GameManager GM;
-
-    private const int RotationSpeed = 100;
     private Transform diceTransform;
 
     // Start is called before the first frame update
     private void Start()
     {
-        GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         diceTransform = dice.transform;
         GameManager.stateChange += GameStateHandler;
     }
