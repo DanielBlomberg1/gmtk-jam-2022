@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-
     public void DiceHasBeenRolled(int rolledAmount)
     {
         if (!(CurrentState == GameState.ROLL_DICE)) { return; }

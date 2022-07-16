@@ -10,6 +10,7 @@ public class ClickHandler : MonoBehaviour
     private TilePoolGenerator tilePool;
     private LevelGenerator levelGen;
     private int index;
+    private int previousChildIndex;
     private GameObject currently;
     private Camera cam;
 
@@ -51,27 +52,50 @@ public class ClickHandler : MonoBehaviour
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 1f;
-            int layerMask = 1 << 8;
-            layerMask = ~layerMask;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 1f;
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-            Vector3 mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
+        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(mousePos);
 
-            if (Physics.Raycast(cam.transform.position, mouseWorldPos - cam.transform.position, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(cam.transform.position, mouseWorldPos - cam.transform.position, out hit, Mathf.Infinity, layerMask)){
+            
+            // if mouse hovered on unset tile
+            if (hit.transform.CompareTag("Unset"))
             {
-                if (hit.transform.CompareTag("Unset"))
-                { 
-                    int index = hit.transform.GetSiblingIndex();
+                // change tile to new one
+                int childIndex = hit.transform.GetSiblingIndex();
 
-                    levelGen.path[index] = new Tile(levelGen.path[index].position, currently, levelGen.path[index].index);
+                levelGen.path[childIndex] = new Tile(levelGen.path[childIndex].position, currently, levelGen.path[childIndex].index);
+                levelGen.ReloadLevel();
+
+                // if different child index
+                if (childIndex != previousChildIndex){
+
+                    // reset previous tile to neutral
+                    levelGen.path[previousChildIndex] = new Tile(levelGen.path[previousChildIndex].position, levelGen.neutralTile, levelGen.path[previousChildIndex].index);
                     levelGen.ReloadLevel();
                 }
+
+                previousChildIndex = childIndex;
+            }
+
+            // hovering same tile as prev frame
+            else if (hit.transform.GetSiblingIndex() == previousChildIndex){
+                if (Input.GetMouseButtonDown(0))
+                {
+                    gameManager.TileHasBeenPlaced();
+                }
+            }
+
+            // otherwise reset to neutral
+            else {
+                levelGen.path[previousChildIndex] = new Tile(levelGen.path[previousChildIndex].position, levelGen.neutralTile, levelGen.path[previousChildIndex].index);
+                levelGen.ReloadLevel();
             }
         }
     }
