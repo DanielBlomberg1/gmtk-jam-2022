@@ -32,8 +32,7 @@ public class ToolTipManager : MonoBehaviour
     public void ShowToolTip(string tip, Vector2 pos, int MAX_WIDTH)
     {
         tipText.text = tip;
-        tipWin.sizeDelta = new Vector2(250,
-            tipText.preferredHeight);
+        tipWin.sizeDelta = new Vector2(MAX_WIDTH, tipText.preferredHeight);
         tipWin.transform.position = new Vector2(pos.x + 50, pos.y);
         tipWin.gameObject.SetActive(true);
     }
