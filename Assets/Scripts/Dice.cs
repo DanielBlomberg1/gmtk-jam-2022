@@ -19,10 +19,13 @@ public class Dice : MonoBehaviour
 
     Rigidbody rigidBody;
 
+    GameManager gameManager;
+
     void Start() {
         mainCamera = Camera.main;
 
         rigidBody = GetComponent<Rigidbody>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     void Update() {
@@ -85,7 +88,11 @@ public class Dice : MonoBehaviour
 
             Debug.Log(gameObject.name + " finished rolling on face " + face);
 
+            gameManager.DiceHasBeenRolled(face);
+
             thrown = false;
+            gameObject.SetActive(false);
+            
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,26 +17,35 @@ public class GameManager : MonoBehaviour
         MENU
     }
 
-    public GameState CurrentState { get => CurrentState; set => CurrentState = value; }
+    public static Action<GameState> stateChange;
+
+    //public Action OnStateChange stateChange;
+
+    private GameState curState;
+
+    public GameState CurrentState { 
+        get { return curState; } 
+        set
+        {
+            curState = value;
+            stateChange(value);
+        } 
+    }
 
     void Start()
     {
-        CurrentState = GameState.MENU;
+        //CurrentState = GameState.MENU;
+        CurrentState = GameState.ROLL_DICE;
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    { 
 
-    }
-    
-
-    public void DiceHasBeenRolled()
+    public void DiceHasBeenRolled(int rolledAmount)
     {
         if (!(CurrentState == GameState.ROLL_DICE)) { return; }
 
         CurrentState = GameState.PLACE_TILE;
+        Debug.Log(gameObject.name + " finished rolling on face " + rolledAmount);
     }
 
     public void TileHasBeenPlaced()
