@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject startTile;
     public GameObject endTile;
 
-    GameObject[,] level;
+    public GameObject[,] level;
 
     private void Start() {
         GenerateLevel();
@@ -100,6 +100,12 @@ public class LevelGenerator : MonoBehaviour
 
             tileIndex++;
         }
+    }
+
+    public void ReloadLevel()
+    {
+        DeleteLevel();
+        InstantiateLevel();
     }
 
     void InstantiateLevel(){

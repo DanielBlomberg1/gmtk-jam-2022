@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 35281779}
   m_Layer: 5
   m_Name: tileset
-  m_TagString: Untagged
+  m_TagString: tilePool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,6 +284,7 @@ MonoBehaviour:
   - {fileID: 4501308228110667562, guid: 71a267baf61013048a4c7dc848336606, type: 3}
   - {fileID: 6752849646510086393, guid: 89e9a020b465ec547b7abcb09604c241, type: 3}
   - {fileID: 8709595989671470219, guid: f06d204a20bd4cd4cab35b83d07a3207, type: 3}
+  gap: 16
 --- !u!1 &2365513642934012507
 GameObject:
   m_ObjectHideFlags: 0

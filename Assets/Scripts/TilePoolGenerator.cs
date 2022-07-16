@@ -5,13 +5,14 @@ using UnityEngine;
 public class TilePoolGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject[] tiles;
-    private List<int> ids;
-    public List<int> IDS => ids;
+    [SerializeField] private int gap;
+    private List<GameObject> ordered;
+    public List<GameObject> ORDERED => ordered;
 
 
     void Start()
     {
-        ids = new List<int>();
+        ordered = new List<GameObject>();
         GenerateTilePool();
     }
 
@@ -21,12 +22,12 @@ public class TilePoolGenerator : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-        Debug.Log("WTF");
+
         for(int i =0; i < 6; i++)
         {
-            float randomamount = Screen.currentResolution.height / 16;
+            float randomamount = Screen.currentResolution.height / gap;
             GameObject randomOne = tiles[Random.Range(0, 6)];
-            ids.Add(randomOne.GetInstanceID());
+            ordered.Add(randomOne);
             Vector3 v = new( 80, 500 - i * randomamount, 0 );
             Instantiate(randomOne, v, Quaternion.identity, gameObject.transform);
         }

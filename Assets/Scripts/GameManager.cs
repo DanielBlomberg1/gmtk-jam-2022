@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         } 
     }
 
+    private int lastThrown = 0;
+    public int LASTTHROWN => lastThrown;
+
     void Start()
     {
         //CurrentState = GameState.MENU;
@@ -45,6 +48,8 @@ public class GameManager : MonoBehaviour
     public void DiceHasBeenRolled(int rolledAmount)
     {
         if (!(CurrentState == GameState.ROLL_DICE)) { return; }
+
+        lastThrown = rolledAmount;
 
         CurrentState = GameState.PLACE_TILE;
         Debug.Log(gameObject.name + " finished rolling on face " + rolledAmount);
