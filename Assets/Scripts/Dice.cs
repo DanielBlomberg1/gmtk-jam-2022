@@ -59,8 +59,6 @@ public class Dice : MonoBehaviour
 
                 rigidBody.AddForce(dir * pullForce);
                 rigidBody.AddTorque(rotationAxis * -dir.magnitude * rotationForce);
-
-                Debug.DrawRay(transform.position, rotationAxis * 5, Color.red);
             }
         }
 
@@ -90,9 +88,18 @@ public class Dice : MonoBehaviour
 
             gameManager.DiceHasBeenRolled(face);
 
-            thrown = false;
-            gameObject.SetActive(false);
-            
+            // start the dissaperance sequence 
+            StartCoroutine(Delay());
+
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3);
+
+        thrown = false;
+        gameObject.SetActive(false);
+        StopAllCoroutines();
     }
 }

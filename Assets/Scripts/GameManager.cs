@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
         set
         {
             curState = value;
-            stateChange(value);
+            Action<GameState> stateChange1 = stateChange;
+            stateChange1(value);
         } 
     }
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         //CurrentState = GameState.MENU;
         CurrentState = GameState.ROLL_DICE;
+        stateChange(GameState.ROLL_DICE);
         DontDestroyOnLoad(this.gameObject);
     }
 

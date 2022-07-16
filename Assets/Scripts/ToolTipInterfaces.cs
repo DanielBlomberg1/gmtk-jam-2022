@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ToolTipInterfaces : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private int MAX_WIDTH = 400;
     [SerializeField] private string TextToShow;
     private const float growthAmount = 1.1f;
     private const float timeToWait = 0.3f;
@@ -34,7 +35,7 @@ public class ToolTipInterfaces : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         Debug.Log("Something has happened..");
         //gameObject.transform.localScale  = new Vector3( x * growthAmount, y * growthAmount, z * growthAmount);
-        ToolTipManager.OnMouseHover(TextToShow, Input.mousePosition, 250);
+        ToolTipManager.OnMouseHover(TextToShow, Input.mousePosition, MAX_WIDTH);
     }
     private IEnumerator Delay()
     {
