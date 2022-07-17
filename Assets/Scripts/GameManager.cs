@@ -107,8 +107,6 @@ public class GameManager : MonoBehaviour
 
     public void TileHasBeenPlaced()
     {
-        if (!(CurrentState == GameState.PLACE_TILE)) { return; }
-
         CurrentState = GameState.ADVANCE_PLAYER;
     }
     

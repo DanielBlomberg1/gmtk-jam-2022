@@ -1240,73 +1240,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142301941}
     m_Modifications:
-    - target: {fileID: 643018382, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -132
-      objectReference: {fileID: 0}
-    - target: {fileID: 643018383, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_margin.x
-      value: 14.005486
-      objectReference: {fileID: 0}
-    - target: {fileID: 643018383, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1148235184, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 1148235184, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 187
-      objectReference: {fileID: 0}
-    - target: {fileID: 1148235185, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_margin.z
-      value: 102.25474
-      objectReference: {fileID: 0}
-    - target: {fileID: 1148235185, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1590176092, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: dice
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: diceParent
       value: 
       objectReference: {fileID: 391262286}
     - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: dicePrefab
-      value: 
-      objectReference: {fileID: 7572554630408062172, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
-    - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: AdvanceButton
       value: 
       objectReference: {fileID: 600806947}
-    - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: diceSpawnLocation.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: diceSpawnLocation.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: diceSpawnLocation.z
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2365513643922515752, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: m_Name
       value: SideBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2365513643922515758, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: m_Color.a
-      value: 0.7294118
       objectReference: {fileID: 0}
     - target: {fileID: 2365513643922515759, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: m_Pivot.x
@@ -2293,22 +2237,6 @@ PrefabInstance:
       propertyPath: rerollText
       value: 
       objectReference: {fileID: 1216342189}
-    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
-      propertyPath: curseList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
-      propertyPath: curseList.Array.data[0]
-      value: 
-      objectReference: {fileID: 3286163911610860551, guid: 5096ec5af95cfcd44a72234ad787f505, type: 3}
-    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
-      propertyPath: curseList.Array.data[1]
-      value: 
-      objectReference: {fileID: 3286163911610860551, guid: 7bdcc6e820901d547a027ae2889d7ee2, type: 3}
-    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
-      propertyPath: curseList.Array.data[2]
-      value: 
-      objectReference: {fileID: 3286163911610860551, guid: c37be7ffd11f8a44582f9dd3763fa802, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
 --- !u!1 &1015288173
@@ -2524,9 +2452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eaaa45a3e2b77445bfe76f09951e44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
-  maxRandomTiles: 5
+  width: 5
+  height: 5
+  maxRandomTiles: 10
   randomTileChance: 30
   tileParent: {fileID: 1420805570}
   randomTiles:
@@ -4637,6 +4565,7 @@ MonoBehaviour:
   tileParent: {fileID: 521865852}
   dicePrefab: {fileID: 7572554630408062172, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
   diceSpawnLocation: {x: 4, y: 3, z: 4}
+  deathMessage: 
 --- !u!4 &1836246520
 Transform:
   m_ObjectHideFlags: 0

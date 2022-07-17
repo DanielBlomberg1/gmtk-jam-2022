@@ -9,6 +9,7 @@ TagManager:
   - Unset
   - Shop
   - DiceParent
+  - ToolTip
   layers:
   - Default
   - TransparentFX
