@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     //public Action OnStateChange stateChange;
 
+    private TilePoolGenerator tileGen;
     private GameState curState;
 
     public GameState CurrentState { 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        tileGen = GameObject.FindGameObjectWithTag("tilePool").GetComponent<TilePoolGenerator>();
         //CurrentState = GameState.MENU;
         CurrentState = GameState.ROLL_DICE;
         stateChange(GameState.ROLL_DICE);
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            tileGen.GenerateTilePool();
             CurrentState = GameState.ROLL_DICE;
         }
         
