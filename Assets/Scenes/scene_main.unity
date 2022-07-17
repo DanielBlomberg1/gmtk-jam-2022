@@ -1933,10 +1933,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1836246519}
-    - target: {fileID: 3737506040586821974, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayerHasAdvanced
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
 --- !u!1 &473135142
@@ -2532,10 +2528,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1969284051}
-    - target: {fileID: 8000154068617468168, guid: f2461b6670228404c8b8668b8b0b97f6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RerollPool
-      objectReference: {fileID: 0}
     - target: {fileID: 8000154068665793444, guid: f2461b6670228404c8b8668b8b0b97f6, type: 3}
       propertyPath: m_Name
       value: reroll
@@ -4251,18 +4243,6 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1184987029826575612, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1184987029826575612, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1184987029826575612, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1184987029826575612, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.46
       objectReference: {fileID: 0}
@@ -4301,10 +4281,6 @@ PrefabInstance:
     - target: {fileID: 1184987029826575612, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4335893456792010119, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
-      propertyPath: holdDelay
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7572554630408062172, guid: 3ae169a7949904644a05bdf15c1b368d, type: 3}
       propertyPath: m_Name
