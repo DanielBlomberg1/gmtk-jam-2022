@@ -31,7 +31,7 @@ public class ClickHandler : MonoBehaviour
         if(newState == GameManager.GameState.PLACE_TILE)
         {
             isRightState = true;
-            index = gameManager.LASTTHROWN - 1;
+            index = gameManager.CHOSENTILE - 1;
             currently = tilePool.ORDERED[index].actualGameObject;
         }
         else

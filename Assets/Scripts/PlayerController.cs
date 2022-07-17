@@ -203,6 +203,7 @@ public class PlayerController : MonoBehaviour
                 AdvancePlayer();
                 break;
             case "DiceTile":
+                gameManager.SpawnDice();
                 AdvancePlayer();
                 break;
             case "Debuff":

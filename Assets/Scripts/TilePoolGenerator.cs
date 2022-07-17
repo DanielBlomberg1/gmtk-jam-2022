@@ -19,6 +19,7 @@ public class TilePoolGenerator : MonoBehaviour
     [SerializeField] private int gap;
     [SerializeField] private float widthToTheLeft;
     [SerializeField] private float heightToTheUp;
+    private GameManager gameManager;
 
     private List<Vector3> positionsUI;
     private List<TileHashMap> ordered;
@@ -30,6 +31,7 @@ public class TilePoolGenerator : MonoBehaviour
     void Start()
     {
         pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         positionsUI = new List<Vector3>(6);
         GetUIPos();
         ordered = new List<TileHashMap>(6);
@@ -75,7 +77,7 @@ public class TilePoolGenerator : MonoBehaviour
 
         // if player.getcomponent<Stats>().rerolls > 0
         
-        if (pC.P_rerolls > 0)
+        if (pC.P_rerolls > 0 && gameManager.CurrentState == GameManager.GameState.ROLL_DICE)
         {
             pC.RerollOnce();
             GenerateTilePool();

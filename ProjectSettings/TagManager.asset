@@ -8,6 +8,7 @@ TagManager:
   - LevelGenerator
   - Unset
   - Shop
+  - DiceParent
   layers:
   - Default
   - TransparentFX

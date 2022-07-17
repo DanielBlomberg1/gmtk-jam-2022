@@ -33,7 +33,6 @@ public class ToolTipInterfaces : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void ShowMessage()
     {
-        Debug.Log("Something has happened..");
         //gameObject.transform.localScale  = new Vector3( x * growthAmount, y * growthAmount, z * growthAmount);
         ToolTipManager.OnMouseHover(TextToShow, Input.mousePosition, MAX_WIDTH);
     }

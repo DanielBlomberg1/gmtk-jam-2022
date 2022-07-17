@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public enum GameState
     {
         ROLL_DICE,
+        CHOOSE_TILE,
         PLACE_TILE,
         ADVANCE_PLAYER,
         PLAYER_IN_COMBAT,
@@ -23,6 +25,13 @@ public class GameManager : MonoBehaviour
 
     private TilePoolGenerator tileGen;
     private GameState curState;
+    public Transform diceParent;
+    public Transform tileParent;
+    public GameObject dicePrefab;
+    public Vector3 diceSpawnLocation;
+
+    private int rolledDice;
+    private List<int> diceFaces;
 
     public GameState CurrentState { 
         get { return curState; } 
@@ -34,15 +43,20 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    private int lastThrown = 0;
-    public int LASTTHROWN => lastThrown;
+    private int chosenTile;
+    public int CHOSENTILE => chosenTile;
 
     void Start()
     {
         tileGen = GameObject.FindGameObjectWithTag("tilePool").GetComponent<TilePoolGenerator>();
         //CurrentState = GameState.MENU;
+        diceFaces = new List<int>();
         CurrentState = GameState.ROLL_DICE;
         stateChange(GameState.ROLL_DICE);
+
+        SpawnDice();
+        SpawnDice();
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -50,7 +64,40 @@ public class GameManager : MonoBehaviour
     {
         if (!(CurrentState == GameState.ROLL_DICE)) { return; }
 
-        lastThrown = rolledAmount;
+        rolledDice++;
+
+        diceFaces.Add(rolledAmount);
+
+        // one dice
+        if (diceParent.childCount == 1){
+            TileHasBeenChosen(rolledAmount);
+
+            rolledDice = 0;
+            diceFaces.Clear();
+        } 
+        // multiple dice
+        else if (rolledDice == diceParent.childCount) {
+            for (int i = 0; i < diceFaces.Count; i++)
+            {   
+                tileParent.GetChild(diceFaces[i] - 1).GetComponent<Button>().enabled = true;
+                tileParent.GetChild(diceFaces[i] - 1).GetChild(0).gameObject.SetActive(true);
+            }
+            
+            rolledDice = 0;
+            diceFaces.Clear();
+            
+            CurrentState = GameState.CHOOSE_TILE;
+        }
+    }
+
+    public void TileHasBeenChosen(int p_chosenTile){
+        chosenTile = p_chosenTile;
+
+        foreach (Transform child in tileParent)
+        {
+            child.GetComponent<Button>().enabled = false;
+            child.GetChild(0).gameObject.SetActive(false);
+        }
 
         CurrentState = GameState.PLACE_TILE;
     }
@@ -66,22 +113,10 @@ public class GameManager : MonoBehaviour
     {
         if(!(CurrentState == GameState.ADVANCE_PLAYER)) { return; }
 
-        // some check to see if current tile is a combat tile;
-        if(true == false)
-        {
-            //CurrentState = GameState.PLAYER_IN_COMBAT;
-        } 
-        // some check to see if palyer has won
-        else if(true == false)
-        {
-            //CurrentState = GameState.PLAYER_HAS_WON;
-        }
-        else
-        {
-            tileGen.GenerateTilePool();
-            CurrentState = GameState.ROLL_DICE;
-        }
-        
+        SpawnDice();
+
+        tileGen.GenerateTilePool();
+        CurrentState = GameState.ROLL_DICE;
     }
 
     public void StartGame()
@@ -91,5 +126,11 @@ public class GameManager : MonoBehaviour
         // load main scene here
 
         CurrentState = GameState.ROLL_DICE;
+    }
+
+    public void SpawnDice(){
+        var dice = Instantiate(dicePrefab, diceSpawnLocation, Quaternion.identity);
+
+        dice.transform.SetParent(diceParent);   
     }
 }
