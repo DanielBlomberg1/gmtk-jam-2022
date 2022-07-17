@@ -1841,38 +1841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142301941}
     m_Modifications:
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontSize
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: f8118692fb2e3754783396ca996cd256, type: 2}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.8490566
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.8490566
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.8490566
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -5682571104253354767, guid: f8118692fb2e3754783396ca996cd256, type: 2}
-    - target: {fileID: 3737506040302621774, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4292467161
-      objectReference: {fileID: 0}
     - target: {fileID: 3737506040586821968, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
       propertyPath: m_Name
       value: AdvancePlayer
@@ -1965,18 +1933,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1836246519}
-    - target: {fileID: 3737506040586821975, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_Color.b
-      value: 0.18039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040586821975, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_Color.g
-      value: 0.15294118
-      objectReference: {fileID: 0}
-    - target: {fileID: 3737506040586821975, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
-      propertyPath: m_Color.r
-      value: 0.11764706
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
 --- !u!1 &473135142
@@ -2357,7 +2313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2365513643922515759, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 815
+      value: 950
       objectReference: {fileID: 0}
     - target: {fileID: 2365513643922515759, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2393,7 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2365513643922515759, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2365513643922515759, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3364,8 +3320,8 @@ MonoBehaviour:
   - {fileID: 8974897363059737156, guid: 60d5af0ebb0e7174dae4f17dcc5971da, type: 3}
   neutralTile: {fileID: 8974897363059737156, guid: f41eece036b256e4f812b850dce4e423, type: 3}
   combatTile: {fileID: 8974897363059737156, guid: aae6bb8ded309b649a1e4bc50618d57d, type: 3}
-  startTile: {fileID: 8974897363059737156, guid: 0db5209d881095c479fd34ac46673341, type: 3}
-  endTile: {fileID: 8974897363059737156, guid: 60d5af0ebb0e7174dae4f17dcc5971da, type: 3}
+  startTile: {fileID: 8974897363059737156, guid: fb527d84dcac5f140a035c0aca7aa4f6, type: 3}
+  endTile: {fileID: 8974897363059737156, guid: b9c8227c30acc634a92362ce979bab77, type: 3}
 --- !u!4 &1052253720
 Transform:
   m_ObjectHideFlags: 0

@@ -19,12 +19,16 @@ public class TilePoolGenerator : MonoBehaviour
     [SerializeField] private int gap;
     [SerializeField] private float widthToTheLeft;
     [SerializeField] private float heightToTheUp;
+
+    private List<Vector3> positionsUI;
     private List<TileHashMap> ordered;
     public List<TileHashMap> ORDERED => ordered;
 
 
     void Start()
     {
+        positionsUI = new List<Vector3>(6);
+        GetUIPos();
         ordered = new List<TileHashMap>(6);
         GenerateTilePool();
     }
@@ -34,10 +38,15 @@ public class TilePoolGenerator : MonoBehaviour
         ordered.Clear();
         foreach (Transform child in transform)
         {
-            GameObject.Destroy(child.gameObject);
+            if (!child.gameObject.name.StartsWith("TilePos1"))
+            {
+                GameObject.Destroy(child.gameObject);
+            } 
         }
 
-        for(int i = 0; i < 6; i++)
+        GetUIPos();
+
+        for (int i = 0; i < 6; i++)
         {
             float randomamount = Screen.currentResolution.height / gap;
             int randomizer = Random.Range(0, 6);
@@ -45,14 +54,17 @@ public class TilePoolGenerator : MonoBehaviour
             GameObject actualTile = actualTiles[randomizer];
             ordered.Add(new TileHashMap(uiTile, actualTile));
 
-
-
-            Vector3 v = new(Screen.currentResolution.width / widthToTheLeft, Screen.currentResolution.height / heightToTheUp - i * randomamount, 0);
-
-
-            Instantiate(uiTile, v, Quaternion.identity, gameObject.transform);
+            Instantiate(uiTile, positionsUI[i], Quaternion.identity, gameObject.transform);
         }
 
+    }
+    private void GetUIPos()
+    {
+        positionsUI.Clear();
+        foreach (Transform child in transform)
+        {
+            positionsUI.Add(child.transform.position);
+        }
     }
 
     public void RerollPool()
