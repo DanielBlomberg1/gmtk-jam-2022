@@ -54,7 +54,7 @@ public class ClickHandler : MonoBehaviour
         if (spaceLeft == false)
         {
             previousChildIndex = 9999;
-            gameManager.TileHasBeenPlaced();
+            gameManager.DiceHasBeenRolled(2);
         }
     }
 

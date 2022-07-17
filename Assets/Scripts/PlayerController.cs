@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
             playerHealthCur += health;
             playerDamage += damage;
             rerolls += re;
+            playerMoney -= money;
             UpdateDamageText();
             UpdateHealthText();
             UpdateMoneyText();
@@ -215,6 +216,7 @@ public class PlayerController : MonoBehaviour
 
     private void AdvancePlayer()
     {
+        if(levelGen.path.Count - 1  == currentTileIndex) { /* call some victory scene here or somewher else */  Debug.Log("Finished"); return; }
         gameManager.PlayerHasAdvanced();
         currentTileIndex += 1;
         if(currentDebuffName == "Nevereding fire")
