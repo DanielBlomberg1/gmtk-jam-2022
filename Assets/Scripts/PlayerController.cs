@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         TextMeshProUGUI text  = damageMarkerContainer.GetComponentInChildren<TextMeshProUGUI>();
         text.text = "-" + amount;
         Vector3 v = Camera.main.WorldToScreenPoint(transform.position);
-        v.z += 150;
+        v.y += 50;
         damageMarkerContainer.transform.position = v;
 
         yield return new WaitForSeconds(2);
