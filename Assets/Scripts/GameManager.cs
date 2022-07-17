@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            CurrentState = GameState.PLACE_TILE;
+            CurrentState = GameState.ROLL_DICE;
         }
         
     }

@@ -69,6 +69,8 @@ public class ClickHandler : MonoBehaviour
                 // change tile to new one
                 int childIndex = hit.transform.GetSiblingIndex();
 
+                if(previousChildIndex == 9999) { previousChildIndex = childIndex; } 
+
                 levelGen.path[childIndex] = new Tile(levelGen.path[childIndex].position, currently, levelGen.path[childIndex].index);
                 levelGen.ReloadLevel();
 
@@ -88,11 +90,12 @@ public class ClickHandler : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     gameManager.TileHasBeenPlaced();
+
+                    previousChildIndex = 9999;
                 }
             }
-
-            // otherwise reset to neutral
             else {
+                if(previousChildIndex == 9999) { return; }
                 levelGen.path[previousChildIndex] = new Tile(levelGen.path[previousChildIndex].position, levelGen.neutralTile, levelGen.path[previousChildIndex].index);
                 levelGen.ReloadLevel();
             }

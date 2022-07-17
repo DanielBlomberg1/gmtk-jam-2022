@@ -1929,6 +1929,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3737506040586821974, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1836246519}
+    - target: {fileID: 3737506040586821974, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerHasAdvanced
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59c3486392cf2434c96144f82d1b086a, type: 3}
 --- !u!1 &473135142
