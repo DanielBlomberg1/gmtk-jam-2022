@@ -39,8 +39,7 @@ public class GameManager : MonoBehaviour
         set
         {
             curState = value;
-            Action<GameState> stateChange1 = stateChange;
-            stateChange1(value);
+            stateChange?.Invoke(value);
         } 
     }
 
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
         //CurrentState = GameState.MENU;
         diceFaces = new List<int>();
         CurrentState = GameState.ROLL_DICE;
-        stateChange(GameState.ROLL_DICE);
 
         SpawnDice();
         SpawnDice();
