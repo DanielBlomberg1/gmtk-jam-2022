@@ -82,8 +82,7 @@ public class PlayerController : MonoBehaviour
             UpdateHealthText();
             SetRerollText();
             ToggleShop();
-            gameManager.PlayerHasAdvanced();
-            currentTileIndex += 1;
+            AdvancePlayer();
         }
     }
 
@@ -102,8 +101,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case 4:
                 ToggleShop();
-                gameManager.PlayerHasAdvanced();
-                currentTileIndex += 1;
+                AdvancePlayer();
                 break;
         }
     }
@@ -127,6 +125,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void AdvancePlayer()
+    {
+        gameManager.PlayerHasAdvanced();
+        currentTileIndex += 1;
+    }
 
     private void CheckTileUnder(Tile tile)
     {
@@ -134,26 +137,29 @@ public class PlayerController : MonoBehaviour
         {
             case "Combat":
                 Combat(new Enemy(UnityEngine.Random.Range(1,4), UnityEngine.Random.Range(1, 2)));
-                gameManager.PlayerHasAdvanced();
-                currentTileIndex += 1;
+                AdvancePlayer();
                 break;
             case "Shop":
                 ToggleShop();
                 break;
             case "Heal":
                 Heal();
-                gameManager.PlayerHasAdvanced();
-                currentTileIndex += 1;
+                AdvancePlayer();
                 break;
             case "DiceTile":
+                AdvancePlayer();
                 break;
             case "Debuff":
+                AdvancePlayer();
                 break;
             case "Treasure":
+                AdvancePlayer();
                 break;
             case "GoalTile":
+                AdvancePlayer();
                 break;
             default:
+                AdvancePlayer();
                 break;
         }
     }
