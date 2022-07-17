@@ -4,6 +4,17 @@ using UnityEngine;
 using TMPro;
 using System;
 
+public struct Enemy
+{
+    public int hp;
+    public int damage;
+    public Enemy(int hp, int damage)
+    {
+        this.hp = hp;
+        this.damage = damage;
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     private bool isRightState = false;
@@ -16,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rerollText;
     [SerializeField] private TextMeshProUGUI playerHpText;
     [SerializeField] private TextMeshProUGUI playerDmgText;
+
+    [SerializeField] private GameObject damageMarkerContainer;
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
@@ -32,6 +45,62 @@ public class PlayerController : MonoBehaviour
     {
         rerolls -= 1;
         SetRerollText();
+    }
+
+    private void Combat(Enemy enemy)
+    {
+        // animations could be here
+        int times = playerDamage % enemy.hp;
+        if(times == 0) { times = 1; }
+        for (int i = 0; i < times; i++)
+        {
+            playerHealthCur -= enemy.damage;
+        }
+        StartCoroutine(Delay(times * enemy.damage));
+         
+        SetPlayerHealthBar();   
+    }
+    private void Heal()
+    {
+        if(playerHealthCur != playerHealthMax)
+        {
+            if(playerHealthCur + 2  >= playerHealthMax)
+            {
+                playerHealthCur = playerHealthMax;
+            }
+            else
+            {
+                playerHealthCur += 2;
+            }
+        }
+    }
+
+    private void CheckTileUnder(Tile tile)
+    {
+        switch (tile.tilePrefab.name)
+        {
+            case "Combat":
+                Combat(new Enemy(UnityEngine.Random.Range(1,4), UnityEngine.Random.Range(1, 2)));
+                break;
+            case "Shop":
+                break;
+            case "Heal":
+                Heal();
+                break;
+            case "DiceTile":
+                break;
+            case "Debuff":
+                break;
+            case "Treasure":
+                break;
+            case "GoalTile":
+                break;
+            default:
+                break;
+        }
+
+        gameManager.PlayerHasAdvanced();
+        currentTileIndex += 1;
     }
 
     public void TryToAdvance()
@@ -51,10 +120,7 @@ public class PlayerController : MonoBehaviour
             Vector3 newPos = new(diffX + gameObject.transform.position.x, gameObject.transform.position.y, diffZ + gameObject.transform.position.z);
             gameObject.transform.position = newPos;
 
-            // add tile behavior sowhere here 
-            gameManager.PlayerHasAdvanced();
-
-            currentTileIndex += 1;
+            CheckTileUnder(curPath[currentTileIndex + 1]);
         }
     }
 
@@ -87,5 +153,18 @@ public class PlayerController : MonoBehaviour
         {
             isRightState = false;
         }
+    }
+
+    private IEnumerator Delay(int amount)
+    {
+        damageMarkerContainer.SetActive(true);
+        TextMeshProUGUI text  = damageMarkerContainer.GetComponentInChildren<TextMeshProUGUI>();
+        text.text = "-" + amount;
+        Vector3 v = Camera.main.WorldToScreenPoint(transform.position);
+        v.z += 150;
+        damageMarkerContainer.transform.position = v;
+
+        yield return new WaitForSeconds(2);
+        damageMarkerContainer.SetActive(false);  
     }
 }
