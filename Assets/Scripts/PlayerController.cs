@@ -67,10 +67,12 @@ public class PlayerController : MonoBehaviour
         // animations could be here
         int times = 0;
         int enemyHp = enemy.hp;
+        bool boss = false;
+        if (enemyHp > 10) { boss = true; ; }
 
         while (enemyHp > 0)
         {
-            int r = UnityEngine.Random.Range(0, 101);
+            int r = Random.Range(0, 101);
             if(r <= (currentDebuffName == "Wagner's Tentacle" ? 75 : 100))
             {
                 enemyHp -= playerDamage;
@@ -89,7 +91,11 @@ public class PlayerController : MonoBehaviour
         UpdateHealthText();   
         if(playerHealthCur > 0)
         {
-            playerMoney += UnityEngine.Random.Range(1, 4);
+            playerMoney += Random.Range(1, 4);
+            if (boss)
+            {
+                SceneManager.LoadScene("scene_victory");
+            }
             UpdateMoneyText();
         }
         else
@@ -225,7 +231,6 @@ public class PlayerController : MonoBehaviour
 
     private void AdvancePlayer()
     {
-        if (levelGen.path.Count == currentTileIndex) { /* call some victory scene here or somewher else */  Debug.Log("Finished"); return; }
         gameManager.PlayerHasAdvanced();
         currentTileIndex += 1;
         if(currentDebuffName == "Nevereding fire")
