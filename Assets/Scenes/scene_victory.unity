@@ -576,7 +576,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Congratulations you have defeated x. oh and also won the game.
+  m_text: Congratulations you have defeated Big ass carcossonne dude. oh and also
+    won the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8118692fb2e3754783396ca996cd256, type: 2}
   m_sharedMaterial: {fileID: -5682571104253354767, guid: f8118692fb2e3754783396ca996cd256, type: 2}
