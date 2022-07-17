@@ -24,9 +24,12 @@ public class TilePoolGenerator : MonoBehaviour
     private List<TileHashMap> ordered;
     public List<TileHashMap> ORDERED => ordered;
 
+    PlayerController pC;
+
 
     void Start()
     {
+        pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         positionsUI = new List<Vector3>(6);
         GetUIPos();
         ordered = new List<TileHashMap>(6);
@@ -69,9 +72,12 @@ public class TilePoolGenerator : MonoBehaviour
 
     public void RerollPool()
     {
+
         // if player.getcomponent<Stats>().rerolls > 0
-        if (true == true)
+        
+        if (pC.P_rerolls > 0)
         {
+            pC.RerollOnce();
             GenerateTilePool();
         }
     }
