@@ -288,7 +288,11 @@ public class PlayerController : MonoBehaviour
         if (!isRightState) { return; }
         List<Tile> curPath = levelGen.path;
 
-        if (curPath.Count - 1 > currentTileIndex)
+        if(curPath.Count - 1 == currentTileIndex)
+        {
+            CheckTileUnder(curPath[currentTileIndex]);
+        }
+        else if (currentTileIndex <= curPath.Count - 1)
         {
             float diffX = curPath[currentTileIndex + 1].position.x - curPath[currentTileIndex].position.x;
             float diffZ = curPath[currentTileIndex + 1].position.y - curPath[currentTileIndex].position.y;

@@ -127,10 +127,23 @@ public class GameManager : MonoBehaviour
     {
         if(!(CurrentState == GameState.ADVANCE_PLAYER)) { return; }
 
-        SpawnDice();
-
+        
         tileGen.GenerateTilePool();
-        CurrentState = GameState.ROLL_DICE;
+        List<Tile> pathlol = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>().path;
+        bool something = true;
+        foreach(Tile tile in pathlol)
+        {
+            if (tile.tilePrefab.name.StartsWith("Unset Tile"))
+            { 
+                something = false;
+            }
+        }
+
+        if (!something)
+        {
+            CurrentState = GameState.ROLL_DICE;
+            SpawnDice();
+        }
     }
 
     public void PlayerHasDied(Enemy enemy)
