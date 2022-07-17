@@ -106,22 +106,12 @@ public class Dice : MonoBehaviour
             Debug.Log(gameObject.name + " finished rolling on face " + face);
             
             gameManager.DiceHasBeenRolled(face);
-
-            // start the dissaperance sequence 
-            StartCoroutine(Delay());
         }
-    }
-
-    private IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(1.5f);
-
-        Destroy(gameObject);
     }
 
     private IEnumerator PlayDiceSound()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
 
         audioSource.Play();
     }

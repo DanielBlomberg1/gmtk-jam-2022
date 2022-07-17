@@ -98,6 +98,11 @@ public class GameManager : MonoBehaviour
     public void TileHasBeenChosen(int p_chosenTile){
         chosenTile = p_chosenTile;
 
+        foreach (Transform dice in diceParent)
+        {
+            Destroy(dice.gameObject);
+        }
+
         foreach (Transform child in tileParent)
         {
             if (child.GetSiblingIndex() != chosenTile - 1){
