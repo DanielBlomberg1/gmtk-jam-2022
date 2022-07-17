@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private GameObject damageMarkerContainer;
+    [SerializeField] private GameObject shop;
+    [SerializeField] private GameObject backdrop;
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
@@ -64,13 +66,52 @@ public class PlayerController : MonoBehaviour
         UpdateHealthText();   
         if(playerHealthCur > 0)
         {
-            playerMoney += UnityEngine.Random.Range(1, 3);
+            playerMoney += UnityEngine.Random.Range(1, 4);
             UpdateMoneyText();
         }
     }
-    private void Shop()
+    private void Buy(int money, int health, int damage, int re)
     {
+        if(playerMoney >= money)
+        {
+            playerHealthMax += health;
+            playerHealthCur += health;
+            playerDamage += damage;
+            rerolls += re;
+            UpdateDamageText();
+            UpdateHealthText();
+            SetRerollText();
+            ToggleShop();
+            gameManager.PlayerHasAdvanced();
+            currentTileIndex += 1;
+        }
+    }
 
+    public void ShopOnClick(int whichButton)
+    {
+        switch (whichButton)
+        {
+            case 1:
+                Buy(8, 0, 3, 0);
+                break;
+            case 2:
+                Buy(7, 4, 0, 0);
+                break;
+            case 3:
+                Buy(4, 0, 0, 2);
+                break;
+            case 4:
+                ToggleShop();
+                gameManager.PlayerHasAdvanced();
+                currentTileIndex += 1;
+                break;
+        }
+    }
+
+    private void ToggleShop()
+    {
+        backdrop.SetActive(!shop.activeInHierarchy);
+        shop.SetActive(!shop.activeInHierarchy);
     }
     private void Heal()
     {
@@ -93,12 +134,16 @@ public class PlayerController : MonoBehaviour
         {
             case "Combat":
                 Combat(new Enemy(UnityEngine.Random.Range(1,4), UnityEngine.Random.Range(1, 2)));
+                gameManager.PlayerHasAdvanced();
+                currentTileIndex += 1;
                 break;
             case "Shop":
-                Shop();
+                ToggleShop();
                 break;
             case "Heal":
                 Heal();
+                gameManager.PlayerHasAdvanced();
+                currentTileIndex += 1;
                 break;
             case "DiceTile":
                 break;
@@ -111,9 +156,6 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-
-        gameManager.PlayerHasAdvanced();
-        currentTileIndex += 1;
     }
 
     public void TryToAdvance()
