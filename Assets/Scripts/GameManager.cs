@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
         if (diceParent.childCount == 1){
             TileHasBeenChosen(rolledAmount);
 
+            tileParent.GetChild(rolledAmount - 1).GetChild(0).gameObject.SetActive(true);
+
             rolledDice = 0;
             diceFaces.Clear();
         } 
@@ -98,8 +100,11 @@ public class GameManager : MonoBehaviour
 
         foreach (Transform child in tileParent)
         {
+            if (child.GetSiblingIndex() != chosenTile - 1){
+                child.GetChild(0).gameObject.SetActive(false);
+            }
+
             child.GetComponent<Button>().enabled = false;
-            child.GetChild(0).gameObject.SetActive(false);
         }
 
         CurrentState = GameState.PLACE_TILE;
@@ -107,6 +112,11 @@ public class GameManager : MonoBehaviour
 
     public void TileHasBeenPlaced()
     {
+        foreach (Transform child in tileParent)
+        {
+            child.GetChild(0).gameObject.SetActive(false);
+        }
+
         CurrentState = GameState.ADVANCE_PLAYER;
     }
     
@@ -142,7 +152,7 @@ public class GameManager : MonoBehaviour
 
         dice.transform.SetParent(diceParent);
     }
-    
+
     public void GotoMenu()
     {
         CurrentState = GameState.LOADING;

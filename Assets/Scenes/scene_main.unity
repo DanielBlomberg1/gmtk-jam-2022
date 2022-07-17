@@ -2624,9 +2624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eaaa45a3e2b77445bfe76f09951e44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 5
-  height: 5
-  maxRandomTiles: 10
+  width: 10
+  height: 10
+  maxRandomTiles: 6
   randomTileChance: 30
   tileParent: {fileID: 1420805570}
   randomTiles:
