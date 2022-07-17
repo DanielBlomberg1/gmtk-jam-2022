@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
+    private AudioSource audioSource;
 
     public int P_rerolls => rerolls;
     public int P_playerHealthMax => playerHealthMax;
@@ -282,6 +283,8 @@ public class PlayerController : MonoBehaviour
             Vector3 newPos = new(diffX + gameObject.transform.position.x, gameObject.transform.position.y, diffZ + gameObject.transform.position.z);
             gameObject.transform.position = newPos;
 
+            audioSource.Play();
+
             CheckTileUnder(curPath[currentTileIndex + 1]);
         }
         else
@@ -306,6 +309,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         GameManager.stateChange += GameStateHandler;
         levelGen = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>();
