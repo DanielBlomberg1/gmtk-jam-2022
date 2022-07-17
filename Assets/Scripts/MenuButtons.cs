@@ -12,4 +12,8 @@ public class MenuButtons : MonoBehaviour
     public void Play(){
         SceneManager.LoadScene("scene_main");
     }
+
+    public void Menu(){
+        SceneManager.LoadScene("scene_menu");
+    }
 }
