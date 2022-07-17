@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,28 +6,27 @@ using TMPro;
 public class DeathScreenHandler : MonoBehaviour
 {
     [SerializeField] GameObject D;
-    GameObject GM;
-    TextMeshProUGUI dm;
+    [SerializeField] TextMeshProUGUI t;
+    private string[] basicEnemyNames = new string[] { "A baby Goblin", "Goblin duo", "A singular Ant", "An apple falling from a tree", "Hitting your toe on a rock", "A local squarrel on cocaine" };
+    private string[] bossEnemyNames = new string[] { "Alexstraszszaa the Life-Binder", "Sherk from Srerk", "Big bad wolf", "Big ass carcossonne dude" };
+
 
     void Start()
     {
-        GM = GameObject.FindGameObjectWithTag("GameController");
-        dm.text = GM.GetComponent<GameManager>().deathMessage;
+        
+        if(Random.Range(0, 2) == 0)
+        {
+            t.text = "You were slain by " + basicEnemyNames[Random.Range(0, basicEnemyNames.Length)] + ". Would you like to Try again?";
+        }
+        else
+        {
+            t.text = "You were slain by " + bossEnemyNames[Random.Range(0, bossEnemyNames.Length)] + ". Would you like to Try again?";
+        }
+        
     }
     private void Update()
     {
         D.transform.Rotate(25 * Time.deltaTime, 25 * Time.deltaTime, 0);
-    }
-
-    public void ClickYes()
-    {
-        GameManager gm = GM.GetComponent<GameManager>();
-        gm.StartGame();
-    }
-    public void ClickYES()
-    {
-        GameManager gm = GM.GetComponent<GameManager>();
-        gm.GotoMenu();
     }
 
 }
