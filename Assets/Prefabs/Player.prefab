@@ -1978,7 +1978,10 @@ MonoBehaviour:
   shop: {fileID: 1358404442}
   backdrop: {fileID: 7604929750216775277}
   debuffContainer: {fileID: 864046365}
-  curseList: []
+  curseList:
+  - {fileID: 3286163911610860551, guid: 5096ec5af95cfcd44a72234ad787f505, type: 3}
+  - {fileID: 3286163911610860551, guid: 7bdcc6e820901d547a027ae2889d7ee2, type: 3}
+  - {fileID: 3286163911610860551, guid: c37be7ffd11f8a44582f9dd3763fa802, type: 3}
 --- !u!82 &-6879965549574419761
 AudioSource:
   m_ObjectHideFlags: 0

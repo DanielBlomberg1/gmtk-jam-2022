@@ -12,7 +12,7 @@ public class DeathScreenHandler : MonoBehaviour
 
     void Start()
     {
-        GM = GameObject.FindGameObjectWithTag("Game Controller");
+        GM = GameObject.FindGameObjectWithTag("GameController");
         dm.text = GM.GetComponent<GameManager>().deathMessage;
     }
     private void Update()
