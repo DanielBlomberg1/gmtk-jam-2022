@@ -37,7 +37,7 @@ public class CurrentObjectiveManager : MonoBehaviour
                 dice.SetActive(true);
                 break;
             case GameManager.GameState.ADVANCE_PLAYER:
-                tipText.text = "Advance Player";
+                tipText.text = "Advance";
                 break;
             default:
                 break;
