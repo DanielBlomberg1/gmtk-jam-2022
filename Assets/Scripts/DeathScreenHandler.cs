@@ -17,7 +17,7 @@ public class DeathScreenHandler : MonoBehaviour
     }
     private void Update()
     {
-        D.transform.Rotate(0, 0, 50 * Time.deltaTime);
+        D.transform.Rotate(25 * Time.deltaTime, 25 * Time.deltaTime, 0);
     }
 
     public void ClickYes()
