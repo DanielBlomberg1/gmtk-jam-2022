@@ -2271,38 +2271,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142301941}
     m_Modifications:
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[0]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: aae6bb8ded309b649a1e4bc50618d57d, type: 3}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[1]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: 0db5209d881095c479fd34ac46673341, type: 3}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[2]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: c2cade52fc8ed3c429152dcec2462f82, type: 3}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[3]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: 60d5af0ebb0e7174dae4f17dcc5971da, type: 3}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[4]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: 90f963e42504d72469a0e8d534f96037, type: 3}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[5]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: 6c1156100a2284d46827c3be739b765a, type: 3}
-    - target: {fileID: 35281779, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
-      propertyPath: tiles.Array.data[6]
-      value: 
-      objectReference: {fileID: 8974897363059737156, guid: 6c1156100a2284d46827c3be739b765a, type: 3}
     - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: dice
       value: 

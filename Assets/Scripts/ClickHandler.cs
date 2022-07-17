@@ -32,12 +32,7 @@ public class ClickHandler : MonoBehaviour
         {
             isRightState = true;
             index = gameManager.LASTTHROWN - 1;
-           // Debug.Log(tilePool.ORDERED.Count);
-            for(int i = 0; i < tilePool.ORDERED.Count; i++)
-            {
-                //Debug.Log(tilePool.ORDERED[i].name);
-            }
-            currently = tilePool.ORDERED[index];
+            currently = tilePool.ORDERED[index].actualGameObject;
         }
         else
         {

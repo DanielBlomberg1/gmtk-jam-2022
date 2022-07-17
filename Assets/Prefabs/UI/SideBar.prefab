@@ -284,7 +284,16 @@ MonoBehaviour:
   - {fileID: 4501308228110667562, guid: 71a267baf61013048a4c7dc848336606, type: 3}
   - {fileID: 6752849646510086393, guid: 89e9a020b465ec547b7abcb09604c241, type: 3}
   - {fileID: 8709595989671470219, guid: f06d204a20bd4cd4cab35b83d07a3207, type: 3}
-  gap: 16
+  actualTiles:
+  - {fileID: 8974897363059737156, guid: aae6bb8ded309b649a1e4bc50618d57d, type: 3}
+  - {fileID: 8974897363059737156, guid: 0db5209d881095c479fd34ac46673341, type: 3}
+  - {fileID: 8974897363059737156, guid: c2cade52fc8ed3c429152dcec2462f82, type: 3}
+  - {fileID: 8974897363059737156, guid: 60d5af0ebb0e7174dae4f17dcc5971da, type: 3}
+  - {fileID: 8974897363059737156, guid: 90f963e42504d72469a0e8d534f96037, type: 3}
+  - {fileID: 8974897363059737156, guid: 6c1156100a2284d46827c3be739b765a, type: 3}
+  gap: 18
+  widthToTheLeft: 30
+  heightToTheUp: 2.55
 --- !u!1 &2365513642934012507
 GameObject:
   m_ObjectHideFlags: 0
