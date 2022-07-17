@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using Unity.VectorGraphics;
 
 public struct Enemy
 {
@@ -34,6 +35,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject damageMarkerContainer;
     [SerializeField] private GameObject shop;
     [SerializeField] private GameObject backdrop;
+    [SerializeField] private GameObject debuffContainer;
+    [SerializeField] private Sprite[] curseList;
+    private string currentDebuffName = "";
+    private int fireStacks = 0;
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
@@ -55,7 +60,20 @@ public class PlayerController : MonoBehaviour
     private void Combat(Enemy enemy)
     {
         // animations could be here
-        int times = playerDamage % enemy.hp;
+        int times = 0;
+        int enemyHp = enemy.hp;
+
+        while (enemyHp > 0)
+        {
+            int r = UnityEngine.Random.Range(0, 101);
+            if(r <= (currentDebuffName == "Wagner's Tentacle" ? 75 : 100))
+            {
+                enemyHp -= playerDamage;
+            }
+            times++;
+        }
+
+
         if(times == 0) { times = 1; }
         for (int i = 0; i < times; i++)
         {
@@ -113,22 +131,60 @@ public class PlayerController : MonoBehaviour
     }
     private void Heal()
     {
+        int healAmount = currentDebuffName == "Voodoo doll" ? 2 : 3;
         if(playerHealthCur != playerHealthMax)
         {
-            if(playerHealthCur + 2  >= playerHealthMax)
+            if(playerHealthCur + healAmount >= playerHealthMax)
             {
                 playerHealthCur = playerHealthMax;
             }
             else
             {
-                playerHealthCur += 2;
+                playerHealthCur += healAmount;
             }
         }
     }
+    private void DebuffRoll()
+    {
+        int randomCurse = UnityEngine.Random.Range(0, 3); 
+        if(randomCurse == 0)
+        {
+            currentDebuffName = "Nevereding fire";
+            debuffContainer.SetActive(true);
+            debuffContainer.GetComponent<SVGImage>().sprite = curseList[randomCurse];
+            debuffContainer.GetComponentInChildren<TextMeshProUGUI>().text = currentDebuffName;
+            debuffContainer.GetComponent<ToolTipInterfaces>().TextToShow = "Deals damage to the player every 4 advances";
+        }else if (randomCurse == 1)
+        {
+            currentDebuffName = "Wagner's Tentacle";
+            debuffContainer.SetActive(true);
+            debuffContainer.GetComponent<SVGImage>().sprite = curseList[randomCurse];
+            debuffContainer.GetComponentInChildren<TextMeshProUGUI>().text = currentDebuffName;
+            debuffContainer.GetComponent<ToolTipInterfaces>().TextToShow = "Reduces the players chance to hit enemies by 25%";
+        }else if(randomCurse == 2)
+        {
+            currentDebuffName = "Voodoo doll";
+            debuffContainer.SetActive(true);
+            debuffContainer.GetComponent<SVGImage>().sprite = curseList[randomCurse];
+            debuffContainer.GetComponentInChildren<TextMeshProUGUI>().text = currentDebuffName;
+            debuffContainer.GetComponent<ToolTipInterfaces>().TextToShow = "While active the player heals 1 less from healing tiles.";
+        }
+        
+    }
+
     private void AdvancePlayer()
     {
         gameManager.PlayerHasAdvanced();
         currentTileIndex += 1;
+        if(currentDebuffName == "Nevereding fire")
+        {
+            fireStacks += 1;
+            if (fireStacks % 4 == 0)
+            {
+                playerHealthCur -= 1;
+                UpdateHealthText();
+            }
+        }
     }
 
     private void CheckTileUnder(Tile tile)
@@ -150,6 +206,7 @@ public class PlayerController : MonoBehaviour
                 AdvancePlayer();
                 break;
             case "Debuff":
+                DebuffRoll();
                 AdvancePlayer();
                 break;
             case "Treasure":

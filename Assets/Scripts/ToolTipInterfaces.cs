@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class ToolTipInterfaces : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private int MAX_WIDTH = 400;
-    [SerializeField] private string TextToShow;
+    [SerializeField] public string TextToShow;
     private const float growthAmount = 1.1f;
     private const float timeToWait = 0.3f;
     private float x, y, z;

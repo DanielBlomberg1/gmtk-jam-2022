@@ -2629,6 +2629,22 @@ PrefabInstance:
       propertyPath: rerollText
       value: 
       objectReference: {fileID: 1216342189}
+    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
+      propertyPath: curseList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
+      propertyPath: curseList.Array.data[0]
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: 5096ec5af95cfcd44a72234ad787f505, type: 3}
+    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
+      propertyPath: curseList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: 7bdcc6e820901d547a027ae2889d7ee2, type: 3}
+    - target: {fileID: 3138187751092407274, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
+      propertyPath: curseList.Array.data[2]
+      value: 
+      objectReference: {fileID: 3286163911610860551, guid: c37be7ffd11f8a44582f9dd3763fa802, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4db90fea05ee39c42a1f488f4b4b7bc8, type: 3}
 --- !u!1 &1008123074
