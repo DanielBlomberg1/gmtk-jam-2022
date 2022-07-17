@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerHealthMax;
     [SerializeField] private int playerHealthCur;
     [SerializeField] private int playerDamage;
+    [SerializeField] private int playerMoney;
     [SerializeField] private int rerolls;
 
     [SerializeField] private TextMeshProUGUI rerollText;
     [SerializeField] private TextMeshProUGUI playerHpText;
     [SerializeField] private TextMeshProUGUI playerDmgText;
+    [SerializeField] private TextMeshProUGUI playerMoneyText;
+
 
     [SerializeField] private GameObject damageMarkerContainer;
 
@@ -58,7 +61,16 @@ public class PlayerController : MonoBehaviour
         }
         StartCoroutine(Delay(times * enemy.damage));
          
-        SetPlayerHealthBar();   
+        UpdateHealthText();   
+        if(playerHealthCur > 0)
+        {
+            playerMoney += UnityEngine.Random.Range(1, 3);
+            UpdateMoneyText();
+        }
+    }
+    private void Shop()
+    {
+
     }
     private void Heal()
     {
@@ -83,6 +95,7 @@ public class PlayerController : MonoBehaviour
                 Combat(new Enemy(UnityEngine.Random.Range(1,4), UnityEngine.Random.Range(1, 2)));
                 break;
             case "Shop":
+                Shop();
                 break;
             case "Heal":
                 Heal();
@@ -112,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
         List<Tile> curPath = levelGen.path;
 
-        if (curPath.Count > currentTileIndex)
+        if (curPath.Count - 1 > currentTileIndex)
         {
             float diffX = curPath[currentTileIndex + 1].position.x - curPath[currentTileIndex].position.x;
             float diffZ = curPath[currentTileIndex + 1].position.y - curPath[currentTileIndex].position.y;
@@ -122,17 +135,25 @@ public class PlayerController : MonoBehaviour
 
             CheckTileUnder(curPath[currentTileIndex + 1]);
         }
+        else
+        {
+            Debug.Log("Finished");
+        }
     }
 
-    private void SetPlayerHealthBar()
+    private void UpdateHealthText()
     {
         playerHpText.text = "Health: " + playerHealthCur + " / " + playerHealthMax;   
     }
-    private void SetPlayerDamageBar()
+    private void UpdateDamageText()
     {
         playerDmgText.text = "Damage: " + playerDamage;
     }
 
+    private void UpdateMoneyText()
+    {
+        playerMoneyText.text = "Money: " + playerMoney;
+    }
 
     void Start()
     {
@@ -140,7 +161,9 @@ public class PlayerController : MonoBehaviour
         GameManager.stateChange += GameStateHandler;
         levelGen = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>();
         SetRerollText();
-        SetPlayerHealthBar();
+        UpdateHealthText();
+        UpdateDamageText();
+        UpdateMoneyText();
     }
 
     private void GameStateHandler(GameManager.GameState newState)
