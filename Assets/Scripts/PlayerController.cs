@@ -260,7 +260,21 @@ public class PlayerController : MonoBehaviour
                 AdvancePlayer();
                 break;
             case "DiceTile":
-                gameManager.SpawnDice();
+                List<Tile> pathlol = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>().path;
+                bool something = true;
+                foreach(Tile tile2 in pathlol)
+                {
+                    if (tile2.tilePrefab.name.StartsWith("Unset Tile"))
+                    { 
+                        something = false;
+                    }
+                }
+
+                if (!something)
+                {
+                    gameManager.SpawnDice();
+                }
+
                 AdvancePlayer();
                 break;
             case "Debuff":
