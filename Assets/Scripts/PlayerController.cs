@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int currentTileIndex = 0;
     [SerializeField] private int playerHealthMax;
     [SerializeField] private int playerHealthCur;
+    [SerializeField] private int playerDamage;
     [SerializeField] private int rerolls;
 
     [SerializeField] private TextMeshProUGUI rerollText;
+    [SerializeField] private TextMeshProUGUI playerHpText;
+    [SerializeField] private TextMeshProUGUI playerDmgText;
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
@@ -55,6 +58,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SetPlayerHealthBar()
+    {
+        playerHpText.text = "Health: " + playerHealthCur + " / " + playerHealthMax;   
+    }
+    private void SetPlayerDamageBar()
+    {
+        playerDmgText.text = "Damage: " + playerDamage;
+    }
+
 
     void Start()
     {
@@ -62,6 +74,7 @@ public class PlayerController : MonoBehaviour
         GameManager.stateChange += GameStateHandler;
         levelGen = GameObject.FindGameObjectWithTag("LevelGenerator").GetComponent<LevelGenerator>();
         SetRerollText();
+        SetPlayerHealthBar();
     }
 
     private void GameStateHandler(GameManager.GameState newState)
