@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private string currentDebuffName = "";
     private int fireStacks = 0;
     private string[] basicEnemyNames = new string[] { "A baby Goblin", "Goblin duo", "A singular Ant", "An apple falling from a tree", "Hitting your toe on a rock", "A local squarrel on cocaine" };
-    private string[] bossEnemyNames = new string[] { "Alexstrasza the Life-Binder", "Sherk from Srerk", "Big bad wolf", "Big ass carcossonne dude" };
+    private string[] bossEnemyNames = new string[] { "Alexstraszszaa the Life-Binder", "Sherk from Srerk", "Big bad wolf", "Big ass carcossonne dude" };
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void AdvancePlayer()
     {
-        if (levelGen.path.Count - 1 == currentTileIndex) { /* call some victory scene here or somewher else */  Debug.Log("Finished"); return; }
+        if (levelGen.path.Count == currentTileIndex) { /* call some victory scene here or somewher else */  Debug.Log("Finished"); return; }
         gameManager.PlayerHasAdvanced();
         currentTileIndex += 1;
         if(currentDebuffName == "Nevereding fire")
@@ -280,6 +280,7 @@ public class PlayerController : MonoBehaviour
     public void TryToAdvance()
     {
         if (levelGen.path.Count - 1 == currentTileIndex) { /* call some victory scene here or somewher else */  Debug.Log("Finished"); return; }
+        if (!isRightState) { return; }
         List<Tile> curPath = levelGen.path;
 
         if (curPath.Count - 1 > currentTileIndex)
