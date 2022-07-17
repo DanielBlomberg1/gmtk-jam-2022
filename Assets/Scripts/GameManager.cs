@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         SpawnDice();
         SpawnDice();
 
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void DiceHasBeenRolled(int rolledAmount)
