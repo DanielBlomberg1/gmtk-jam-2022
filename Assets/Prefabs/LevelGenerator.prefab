@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6799926822193411635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6799926822193411645}
+  - component: {fileID: 6799926822193411634}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: LevelGenerator
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6799926822193411645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6799926822193411635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6799926822193411634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6799926822193411635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eaaa45a3e2b77445bfe76f09951e44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  height: 10
+  maxRandomTiles: 5
+  randomTileChance: 30
+  tileParent: {fileID: 0}
+  randomTiles:
+  - {fileID: 8974897363059737156, guid: 0db5209d881095c479fd34ac46673341, type: 3}
+  - {fileID: 8974897363059737156, guid: 6c1156100a2284d46827c3be739b765a, type: 3}
+  - {fileID: 8974897363059737156, guid: aae6bb8ded309b649a1e4bc50618d57d, type: 3}
+  - {fileID: 8974897363059737156, guid: c2cade52fc8ed3c429152dcec2462f82, type: 3}
+  - {fileID: 8974897363059737156, guid: 60d5af0ebb0e7174dae4f17dcc5971da, type: 3}
+  neutralTile: {fileID: 8974897363059737156, guid: f41eece036b256e4f812b850dce4e423, type: 3}
+  combatTile: {fileID: 8974897363059737156, guid: aae6bb8ded309b649a1e4bc50618d57d, type: 3}
+  startTile: {fileID: 8974897363059737156, guid: fb527d84dcac5f140a035c0aca7aa4f6, type: 3}
+  endTile: {fileID: 8974897363059737156, guid: b9c8227c30acc634a92362ce979bab77, type: 3}
