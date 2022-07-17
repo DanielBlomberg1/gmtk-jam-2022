@@ -1530,6 +1530,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1142301941}
     m_Modifications:
+    - target: {fileID: 643018382, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -132
+      objectReference: {fileID: 0}
+    - target: {fileID: 643018383, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_margin.x
+      value: 14.005486
+      objectReference: {fileID: 0}
+    - target: {fileID: 643018383, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148235184, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148235184, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 187
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148235185, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_margin.z
+      value: 102.25474
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148235185, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590176092, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 1590176093, guid: 81fbd0999d286d54aa45c8a1f2833fc4, type: 3}
       propertyPath: dice
       value: 
