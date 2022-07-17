@@ -14,6 +14,8 @@ public class ClickHandler : MonoBehaviour
     private GameObject currently;
     private Camera cam;
 
+    private bool spaceLeft = true;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -39,6 +41,22 @@ public class ClickHandler : MonoBehaviour
             isRightState = false;
         }
     }
+    private void IsThereSpace()
+    {
+        spaceLeft = false;
+        foreach (Tile tile in levelGen.path)
+        {
+            if (tile.tilePrefab.name.StartsWith("Unset Tile"))
+            {
+                spaceLeft = true;
+            }
+        }
+        if (spaceLeft == false)
+        {
+            previousChildIndex = 9999;
+            gameManager.TileHasBeenPlaced();
+        }
+    }
 
     private void Update()
     {
@@ -47,6 +65,7 @@ public class ClickHandler : MonoBehaviour
             return;
         }
 
+        IsThereSpace();
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 1f;
         int layerMask = 1 << 9;

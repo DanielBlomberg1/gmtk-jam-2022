@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
             rerolls += re;
             UpdateDamageText();
             UpdateHealthText();
+            UpdateMoneyText();
             SetRerollText();
             ToggleShop();
             AdvancePlayer();
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
         switch (whichButton)
         {
             case 1:
-                Buy(8, 0, 3, 0);
+                Buy(5, 0, 3, 0);
                 break;
             case 2:
                 Buy(7, 4, 0, 0);
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Heal()
     {
-        int healAmount = currentDebuffName == "Voodoo doll" ? 2 : 3;
+        int healAmount = (currentDebuffName == "Voodoo doll" ? 2 : 3);
         if(playerHealthCur != playerHealthMax)
         {
             if(playerHealthCur + healAmount >= playerHealthMax)
@@ -151,6 +152,7 @@ public class PlayerController : MonoBehaviour
                 playerHealthCur += healAmount;
             }
         }
+        UpdateHealthText();
     }
     private void DebuffRoll()
     {
