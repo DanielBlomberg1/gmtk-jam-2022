@@ -21,6 +21,8 @@ public class Dice : MonoBehaviour
     bool stationary;
     bool holding;
 
+    AudioSource audioSource;
+    
     Camera mainCamera;
 
     Rigidbody rigidBody;
@@ -31,6 +33,7 @@ public class Dice : MonoBehaviour
         mainCamera = Camera.main;
 
         rigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
@@ -45,6 +48,7 @@ public class Dice : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && Time.time - holdStart > holdDelay){
             holding = false;
             thrown = true;
+            StartCoroutine(PlayDiceSound());
         }
     }
 
@@ -113,5 +117,12 @@ public class Dice : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         Destroy(gameObject);
+    }
+
+    private IEnumerator PlayDiceSound()
+    {
+        yield return new WaitForSeconds(1f);
+
+        audioSource.Play();
     }
 }
