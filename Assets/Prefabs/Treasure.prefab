@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8974897363059737176}
   - component: {fileID: 8974897363059737177}
   - component: {fileID: 8974897363059737158}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Treasure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 907132393660676257, guid: 403b0d70b81a20a4eb7cf78cc6e3011c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6035625411081788444, guid: 403b0d70b81a20a4eb7cf78cc6e3011c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -164,6 +168,10 @@ PrefabInstance:
     - target: {fileID: 6035625411081788444, guid: 403b0d70b81a20a4eb7cf78cc6e3011c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7247733152509860471, guid: 403b0d70b81a20a4eb7cf78cc6e3011c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 403b0d70b81a20a4eb7cf78cc6e3011c, type: 3}

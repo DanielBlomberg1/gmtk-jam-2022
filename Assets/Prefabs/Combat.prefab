@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8974897363059737176}
   - component: {fileID: 8974897363059737177}
   - component: {fileID: 8974897363059737158}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Combat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,14 @@ PrefabInstance:
     - target: {fileID: 206437745607877385, guid: b5638a200ebeef441bcec8cdf1c5c8b1, type: 3}
       propertyPath: m_Name
       value: MineEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 206437745607877385, guid: b5638a200ebeef441bcec8cdf1c5c8b1, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343465072528439603, guid: b5638a200ebeef441bcec8cdf1c5c8b1, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6665938084977334584, guid: b5638a200ebeef441bcec8cdf1c5c8b1, type: 3}
       propertyPath: m_RootOrder

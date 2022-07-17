@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7572554630408062172
+--- !u!1 &8974897363059737156
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1184987029826575612}
-  - component: {fileID: 3600200444127172988}
-  - component: {fileID: 3446079000949535341}
-  - component: {fileID: 6749256522599768956}
-  - component: {fileID: 4335893456792010124}
-  - component: {fileID: 4335893456792010119}
-  m_Layer: 0
-  m_Name: Dice
+  - component: {fileID: 8974897363059737159}
+  - component: {fileID: 8974897363059737176}
+  - component: {fileID: 8974897363059737177}
+  - component: {fileID: 8974897363059737158}
+  m_Layer: 9
+  m_Name: GoalTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1184987029826575612
+--- !u!4 &8974897363059737159
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572554630408062172}
+  m_GameObject: {fileID: 8974897363059737156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.459, y: 3.66, z: -1.9565574}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -2, y: 0, z: 2}
+  m_LocalScale: {x: 0.9, y: 0.2, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3600200444127172988
+--- !u!33 &8974897363059737176
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572554630408062172}
-  m_Mesh: {fileID: -835688487210165693, guid: a7538bcaf9206404d8855f451d33303c, type: 3}
---- !u!23 &3446079000949535341
+  m_GameObject: {fileID: 8974897363059737156}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8974897363059737177
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572554630408062172}
+  m_GameObject: {fileID: 8974897363059737156}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02baa2c86e6f2e94eb70f765dc110a83, type: 2}
+  - {fileID: 2100000, guid: 3a57f30fa2e26244289c8585134d0749, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,48 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6749256522599768956
+--- !u!65 &8974897363059737158
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572554630408062172}
-  m_Material: {fileID: 13400000, guid: 7a4eb7dda85407942a787a8093100512, type: 2}
+  m_GameObject: {fileID: 8974897363059737156}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4335893456792010124
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572554630408062172}
-  serializedVersion: 2
-  m_Mass: 0.05
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!114 &4335893456792010119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572554630408062172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3560f3d70da8a4d9367a684679050e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pullForce: 10
-  rotationForce: 0.2
-  holdDelay: 0.2
-  face: 0

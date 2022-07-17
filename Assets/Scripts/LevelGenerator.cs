@@ -42,10 +42,6 @@ public class LevelGenerator : MonoBehaviour
 
         GeneratePath();
 
-        // set start and end tiles
-        path[0] = new Tile(path[0].position, startTile, path[0].index);
-        path[path.Count - 1] = new Tile(path[path.Count - 1].position, endTile, path[path.Count - 1].index);
-
         InstantiateLevel();
     }
 
@@ -119,7 +115,17 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    public void ReloadLevel()
+    {
+        DeleteLevel();
+        InstantiateLevel();
+    }
+
     void InstantiateLevel(){
+        // set start and end tiles
+        path[0] = new Tile(path[0].position, startTile, path[0].index);
+        path[path.Count - 1] = new Tile(path[path.Count - 1].position, endTile, path[path.Count - 1].index);
+
         foreach (Tile tile in path)
         {
             GameObject tileObject = Instantiate(tile.tilePrefab, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.identity);

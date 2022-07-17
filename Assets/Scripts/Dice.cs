@@ -10,10 +10,16 @@ public class Dice : MonoBehaviour
     [SerializeField]
     float rotationForce;
 
+    [SerializeField]
+    float holdDelay;
+
+    float holdStart = -1f;
+
     public int face;
 
     bool thrown;
     bool stationary;
+    bool holding;
 
     Camera mainCamera;
 
@@ -29,14 +35,23 @@ public class Dice : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetMouseButtonUp(0)){
+        // start holding
+        if (Input.GetMouseButtonDown(0) && !holding){
+            holdStart = Time.time;
+
+            holding = true;
+        }
+
+        else if (Input.GetMouseButtonUp(0) && Time.time - holdStart > holdDelay){
+            holding = false;
             thrown = true;
         }
     }
 
     void FixedUpdate(){
+
         // holding dice
-        if (Input.GetMouseButton(0) && !thrown){
+        if (!thrown && holding){
             stationary = false;
 
             rigidBody.drag = 10f;
@@ -90,7 +105,6 @@ public class Dice : MonoBehaviour
 
             // start the dissaperance sequence 
             StartCoroutine(Delay());
-
         }
     }
 

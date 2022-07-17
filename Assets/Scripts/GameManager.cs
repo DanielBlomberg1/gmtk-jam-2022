@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         } 
     }
 
+    private int lastThrown = 0;
+    public int LASTTHROWN => lastThrown;
+
     void Start()
     {
         //CurrentState = GameState.MENU;
@@ -41,13 +44,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-
     public void DiceHasBeenRolled(int rolledAmount)
     {
         if (!(CurrentState == GameState.ROLL_DICE)) { return; }
 
+        lastThrown = rolledAmount;
+
         CurrentState = GameState.PLACE_TILE;
-        Debug.Log(gameObject.name + " finished rolling on face " + rolledAmount);
     }
 
     public void TileHasBeenPlaced()
@@ -64,16 +67,16 @@ public class GameManager : MonoBehaviour
         // some check to see if current tile is a combat tile;
         if(true == false)
         {
-            CurrentState = GameState.PLAYER_IN_COMBAT;
+            //CurrentState = GameState.PLAYER_IN_COMBAT;
         } 
         // some check to see if palyer has won
         else if(true == false)
         {
-            CurrentState = GameState.PLAYER_HAS_WON;
+            //CurrentState = GameState.PLAYER_HAS_WON;
         }
         else
         {
-            CurrentState = GameState.PLACE_TILE;
+            CurrentState = GameState.ROLL_DICE;
         }
         
     }
