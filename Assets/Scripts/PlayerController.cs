@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 using Unity.VectorGraphics;
+using UnityEngine.SceneManagement;
 
 public struct Enemy
 {
     public int hp;
     public int damage;
-    public Enemy(int hp, int damage)
+    public string name;
+    public Enemy(int hp, int damage, string name)
     {
         this.hp = hp;
         this.damage = damage;
+        this.name = name;
     }
 }
 
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite[] curseList;
     private string currentDebuffName = "";
     private int fireStacks = 0;
+    private string[] basicEnemyNames = new string[] { "A baby Goblin", "Goblin duo", "A singular Ant", "An apple falling from a tree", "Hitting your toe on a rock", "A local squarrel on cocaine" };
+    private string[] bossEnemyNames = new string[] { "Alexstrasza the Life-Binder", "Shrek from Shrek", "Big bad wolf", "Big ass carcossonne dude" };
 
     private GameManager gameManager;
     private LevelGenerator levelGen;
@@ -86,6 +90,10 @@ public class PlayerController : MonoBehaviour
         {
             playerMoney += UnityEngine.Random.Range(1, 4);
             UpdateMoneyText();
+        }
+        else
+        {
+            gameManager.PlayerHasDied(enemy);
         }
     }
     private void Buy(int money, int health, int damage, int re)
@@ -171,6 +179,36 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    private void Treasure()
+    {
+        // maybe implement some visual 
+        int randomTreasure = UnityEngine.Random.Range(0, 101);
+        if(randomTreasure < 4)
+        {
+            // gain op sword
+            playerDamage += 5;
+        } else if(randomTreasure < 8)
+        {
+            // gain op armor
+            playerHealthMax += 5;
+        }else if(randomTreasure < 40)
+        {
+            // gain meh sword
+            playerDamage += 2;
+        } else if( randomTreasure < 70)
+        {
+            // gain meh armor
+            playerHealthMax += 2;
+        }
+        else
+        {
+            //gain bad armor
+            playerHealthMax += 1;
+
+        }
+        UpdateDamageText();
+        UpdateHealthText();
+    }
 
     private void AdvancePlayer()
     {
@@ -192,7 +230,7 @@ public class PlayerController : MonoBehaviour
         switch (tile.tilePrefab.name)
         {
             case "Combat":
-                Combat(new Enemy(UnityEngine.Random.Range(1,4), UnityEngine.Random.Range(1, 2)));
+                Combat(new Enemy(UnityEngine.Random.Range(1,4), UnityEngine.Random.Range(1, 2), basicEnemyNames[UnityEngine.Random.Range(0, basicEnemyNames.Length)]));
                 AdvancePlayer();
                 break;
             case "Shop":
@@ -211,9 +249,12 @@ public class PlayerController : MonoBehaviour
                 AdvancePlayer();
                 break;
             case "Treasure":
+                Treasure();
                 AdvancePlayer();
                 break;
             case "GoalTile":
+                // boss encounter
+                Combat(new Enemy(UnityEngine.Random.Range(14, 18), UnityEngine.Random.Range(2, 5), bossEnemyNames[UnityEngine.Random.Range(0, basicEnemyNames.Length)]));
                 AdvancePlayer();
                 break;
             default:

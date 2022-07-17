@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
         PLAYER_HAS_WON,
         PAUSED,
         LOADING,
-        MENU
+        MENU,
+        DEATH
     }
 
     public static Action<GameState> stateChange;
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     private int chosenTile;
     public int CHOSENTILE => chosenTile;
+
+    public string deathMessage;
 
     void Start()
     {
@@ -119,11 +122,19 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.ROLL_DICE;
     }
 
+    public void PlayerHasDied(Enemy enemy)
+    {
+        deathMessage = "You were slain by " + enemy.name + ". Would you like to Try Again?";
+        UnityEngine.SceneManagement.SceneManager.LoadScene("scene_death");
+        CurrentState = GameState.DEATH;
+    }
+
     public void StartGame()
     {
         CurrentState = GameState.LOADING;
 
         // load main scene here
+        UnityEngine.SceneManagement.SceneManager.LoadScene("scene_main");
 
         CurrentState = GameState.ROLL_DICE;
     }
@@ -131,6 +142,13 @@ public class GameManager : MonoBehaviour
     public void SpawnDice(){
         var dice = Instantiate(dicePrefab, diceSpawnLocation, Quaternion.identity);
 
-        dice.transform.SetParent(diceParent);   
+        dice.transform.SetParent(diceParent);
+    }
+    
+    public void GotoMenu()
+    {
+        CurrentState = GameState.LOADING;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("scene_menu");
+        CurrentState = GameState.MENU;
     }
 }
