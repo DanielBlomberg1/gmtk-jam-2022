@@ -6333,7 +6333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game title
+  m_text: Till the day i Die
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f8118692fb2e3754783396ca996cd256, type: 2}
   m_sharedMaterial: {fileID: -5682571104253354767, guid: f8118692fb2e3754783396ca996cd256, type: 2}
